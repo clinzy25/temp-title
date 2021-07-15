@@ -5,12 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "install-server": "pnpm i --prefix server",
-    "install-client": "pnpm i --prefix client",
-    "install": "concurrently \"pnpm run install-server\" \"pnpm run install-client\"",
-    "server": "pnpm start --prefix server",
-    "client": "pnpm start --prefix client",
-    "dev": "concurrently \"pnpm run server\" \"pnpm run client\""
+    "install-server": "npm i --prefix server",
+    "install-client": "npm i --prefix client",
+    "install": "concurrently \"npm run install-server\" \"npm run install-client\"",
+    "server": "npm start --prefix server",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
