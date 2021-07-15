@@ -15,6 +15,7 @@ module.exports = {
   rules: {
     'linebreak-style': 0,
     'comma-dangle': 'off',
+    'jsx-quotes': 0,
   },
   settings: {
     react: {
