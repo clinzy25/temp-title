@@ -1,0 +1,19 @@
+{
+  "name": "temp-title",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clinzy25/temp-title.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/clinzy25/temp-title/issues"
+  },
+  "homepage": "https://github.com/clinzy25/temp-title#readme"
+}
