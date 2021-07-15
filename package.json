@@ -4,7 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install-server": "pnpm i --prefix server",
+    "install-client": "pnpm i --prefix client",
+    "install": "concurrently \"pnpm run install-server\" \"pnpm run install-client\"",
+    "server": "pnpm start --prefix server",
+    "client": "pnpm start --prefix client",
+    "dev": "concurrently \"pnpm run server\" \"pnpm run client\""
   },
   "repository": {
     "type": "git",
@@ -17,6 +23,7 @@
   },
   "homepage": "https://github.com/clinzy25/temp-title#readme",
   "dependencies": {
+    "concurrently": "^6.2.0",
     "jsdoc": "^3.6.7"
   }
 }
