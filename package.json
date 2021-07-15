@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/clinzy25/temp-title/issues"
   },
-  "homepage": "https://github.com/clinzy25/temp-title#readme"
+  "homepage": "https://github.com/clinzy25/temp-title#readme",
+  "dependencies": {
+    "jsdoc": "^3.6.7"
+  }
 }
