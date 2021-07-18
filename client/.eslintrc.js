@@ -16,6 +16,7 @@ module.exports = {
     'linebreak-style': 0,
     'comma-dangle': 'off',
     'jsx-quotes': 0,
+    'react/jsx-fragments': 0,
   },
   settings: {
     react: {

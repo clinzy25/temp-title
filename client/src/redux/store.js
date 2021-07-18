@@ -1,9 +1,9 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import logger from 'redux-logger';
-import reducer from './reducer';
+import feedReducer from './feed_reducer';
 
 const appReducer = combineReducers({
-  reducer,
+  feedReducer,
 });
 
 const store = createStore(appReducer, applyMiddleware(logger));
