@@ -10,8 +10,8 @@ const App = () => (
       <Route exact path='/'>
         <Home />
       </Route>
+      {/* Todo: useParams for unique identifier, and PrivateRoute */}
       <Route exact path='/feed'>
-        {/* Todo: useParams for unique identifier, and PrivateRoute */}
         <HostFeed />
       </Route>
       <Route exact path='*'>

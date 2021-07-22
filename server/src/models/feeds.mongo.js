@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 
 const feedsSchema = new mongoose.Schema({
+  feedNumber: {
+    type: Number,
+    required: true,
+  },
   feedTitle: {
     type: String,
     required: true,
