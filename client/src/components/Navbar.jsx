@@ -7,7 +7,7 @@ import { setFeedTitle } from '../redux/feed_actions';
 const Navbar = () => {
   const { feedTitle, inviteLink } = useSelector((state) => state.feedReducer);
   const dispatch = useDispatch();
-
+  /** For styles only */
   const [isEditingFeedTitle, setisEditingFeedTitle] = useState(false);
 
   return (
@@ -16,9 +16,8 @@ const Navbar = () => {
         type='text'
         className='feed-title'
         defaultValue={feedTitle}
-        onChange={(e) => dispatch(setFeedTitle(e.target.value))}
         onFocus={() => setisEditingFeedTitle(true)}
-        onBlur={() => setisEditingFeedTitle(false)}
+        onBlur={(e) => dispatch(setFeedTitle(e.target.value))}
         onKeyPress={(e) => {
           if (e.key === 'Enter') {
             setisEditingFeedTitle(false);

@@ -14,7 +14,6 @@ const feedReducer = (state = initialState, action) => {
       };
     case FETCH_FEED_SUCCESS:
       /** TODO: destructuring acting weird */
-      console.log(action.payload);
       return {
         ...state,
         feedTitle: action.payload.feedTitle,

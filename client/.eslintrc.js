@@ -14,9 +14,10 @@ module.exports = {
   plugins: ['react'],
   rules: {
     'linebreak-style': 0,
-    'comma-dangle': 'off',
+    'comma-dangle': 0,
     'jsx-quotes': 0,
     'react/jsx-fragments': 0,
+    'import/no-extraneous-dependencies': 0,
   },
   settings: {
     react: {

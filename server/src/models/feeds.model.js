@@ -41,6 +41,7 @@ async function addFeed(feed) {
   /** TODO: remove .concat */
   const inviteLink = generateInviteLink().concat(feedNumber);
 
+  console.log(feed);
   const newFeed = Object.assign(feed, {
     feedNumber,
     inviteLink,
