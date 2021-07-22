@@ -1,13 +1,18 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 
 import { fetchFeed } from '../../api';
-import { fetchFeedSuccess, fetchFeedError, FETCH_FEED_BEGIN } from '../feed_actions';
+import {
+  fetchFeedSuccess,
+  fetchFeedError,
+  FETCH_FEED_BEGIN,
+} from '../feed_actions';
 
-function* fetchFeedFlow(action) {
+function* fetchFeedFlow() {
   try {
-    const res = yield call(fetchFeed, action.payload);
+    /** TODO: add action.payload as unique feed id */
+    const res = yield call(fetchFeed);
     yield put(fetchFeedSuccess(res));
-  } catch (e) {
+  } catch {
     yield put(fetchFeedError());
   }
 }

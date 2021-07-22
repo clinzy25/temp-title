@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { setFeedTitle } from '../redux/feed_actions';
 
 const Navbar = () => {
-  const feedTitle = useSelector((state) => state.feedReducer.feedTitle);
+  const { feedTitle, inviteLink } = useSelector((state) => state.feedReducer);
   const dispatch = useDispatch();
 
   const [isEditingFeedTitle, setisEditingFeedTitle] = useState(false);
@@ -26,6 +26,7 @@ const Navbar = () => {
           }
         }}
       />
+      {inviteLink}
       <Link to='/'>Logout</Link>
     </Wrapper>
   );

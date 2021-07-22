@@ -11,7 +11,7 @@ async function httpGetFeed(req, res) {
   }
   
   const feed = await findFeed(feedId);
-  return res.status(200).json(feed)
+  return res.status(200).json(feed);
 }
 
 module.exports = {
