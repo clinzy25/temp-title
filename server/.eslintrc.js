@@ -15,6 +15,7 @@ module.exports = {
   plugins: ['react'],
   rules: {
     'linebreak-style': 0,
+    'comma-dangle': 0,
   },
   settings: {
     react: {

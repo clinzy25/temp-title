@@ -1,8 +1,9 @@
 const express = require('express');
-const { httpGetFeed } = require('./feeds.controller');
+const { httpGetFeed, httpCreateFeed } = require('./feeds.controller');
 
 const feedsRouter = express.Router();
 
 feedsRouter.get('/:id', httpGetFeed);
+feedsRouter.post('/', httpCreateFeed);
 
 module.exports = feedsRouter;
