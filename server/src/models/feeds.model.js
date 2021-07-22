@@ -1,5 +1,18 @@
 const feeds = require('./feeds.mongo');
 
+async function findFeed(id) {
+  try {
+    return await feeds.findOne({
+      feedNumber: id,
+    })
+  } catch (error) {
+    console.error(`Could not find feed ${id}`)
+  }
+}
+
+/**
+ * Insert mock data
+ */
 const mockFeed = {
   feedNumber: 1,
   feedTitle: 'Temp-title',
@@ -10,7 +23,7 @@ const mockFeed = {
   removedSubscribers: [],
 };
 
-async function saveFeed(feed) {
+async function saveFeedToDb(feed) {
   await feeds.findOneAndUpdate(
     {
       feedNumber: feed.feedNumber,
@@ -23,9 +36,10 @@ async function saveFeed(feed) {
 }
 
 async function insertTempData() {
-  await saveFeed(mockFeed);
+  await saveFeedToDb(mockFeed);
 }
 
 module.exports = {
   insertTempData,
+  findFeed,
 };
