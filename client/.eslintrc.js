@@ -18,6 +18,8 @@ module.exports = {
     'jsx-quotes': 0,
     'react/jsx-fragments': 0,
     'import/no-extraneous-dependencies': 0,
+    camelcase: 0,
+    'no-console': 0,
   },
   settings: {
     react: {

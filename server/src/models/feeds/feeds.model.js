@@ -41,7 +41,6 @@ async function addFeed(feed) {
   /** TODO: remove .concat */
   const inviteLink = generateInviteLink().concat(feedNumber);
 
-  console.log(feed);
   const newFeed = Object.assign(feed, {
     feedNumber,
     inviteLink,
@@ -49,8 +48,8 @@ async function addFeed(feed) {
     subscribers: [],
     removedSubscribers: [],
   });
-
   await saveFeedToDb(newFeed);
+  return newFeed;
 }
 
 /**
@@ -67,6 +66,7 @@ const mockFeed = {
 };
 
 async function insertTempData() {
+  // await feeds.deleteMany({});
   await saveFeedToDb(mockFeed);
 }
 

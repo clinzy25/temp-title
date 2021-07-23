@@ -1,20 +1,31 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 
 import Navbar from '../Navbar';
 import MainInput from '../MainInput';
 import FeedContent from '../FeedContent';
+import LoadingFeed from '../LoadingFeed';
 
 import { fetchFeedBegin } from '../../redux/feed_actions';
+import ErrorPost from '../ErrorPost';
 
 const HostFeed = () => {
   const dispatch = useDispatch();
 
+  const { feedNumber, feed_loading, feed_error } = useSelector(
+    (state) => state.feedReducer
+  );
+  const fetchFeed = async () => {
+    await dispatch(fetchFeedBegin(feedNumber));
+  };
+
   useEffect(() => {
-    dispatch(fetchFeedBegin());
+    fetchFeed();
   }, []);
 
+  if (feed_loading) return <LoadingFeed />;
+  if (feed_error) return <ErrorPost />;
   return (
     <Wrapper>
       <Navbar />

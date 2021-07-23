@@ -1,7 +1,8 @@
-const { findFeed, addFeed } = require('../../models/feeds.model');
+const { findFeed, addFeed } = require('../../models/feeds/feeds.model');
 
 async function httpGetFeed(req, res) {
   const feedId = +req.params.id;
+  console.log(feedId);
   const foundFeed = findFeed(feedId);
   if (!foundFeed) {
     return res.status(404).json({
@@ -14,8 +15,8 @@ async function httpGetFeed(req, res) {
 
 async function httpCreateFeed(req, res) {
   const feed = req.body;
-  addFeed(feed);
-  return res.status(201).json(feed);
+  const completeFeed = await addFeed(feed);
+  return res.status(201).json(completeFeed);
 }
 
 module.exports = {
