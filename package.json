@@ -8,9 +8,10 @@
     "install-server": "npm i --prefix server",
     "install-client": "npm i --prefix client",
     "install": "concurrently \"npm run install-server\" \"npm run install-client\"",
-    "server": "npm start --prefix server",
+    "server": "npm watch --prefix server",
     "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "deploy": "npm run build --prefix client && npm start --prefix server"
   },
   "repository": {
     "type": "git",

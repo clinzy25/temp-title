@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Auth from '../Auth';
 
-
 export const Home = () => {
   const { isLoggedIn } = useSelector((state) => state.user_reducer);
 

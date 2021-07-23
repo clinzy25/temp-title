@@ -2,6 +2,7 @@ import axios from 'axios';
 
 const API_URL = 'http://localhost:3001';
 
+/* eslint-disable */
 export const fetchFeed = async (feedNumber) => {
   try {
     const response = await axios.get(`${API_URL}/feeds/${feedNumber}`);

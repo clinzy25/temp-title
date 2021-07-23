@@ -25,3 +25,5 @@ yarn-debug.log*
 yarn-error.log*
 
 workspace.code-workspace
+cert.pem
+key.pem

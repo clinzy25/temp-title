@@ -1,11 +1,20 @@
-const http = require('http');
+const https = require('https');
+const fs = require('fs');
+const path = require('path');
 require('dotenv').config();
 const app = require('./app');
 const { mongoConnect } = require('./utils/mongo');
 const { insertTempData } = require('./models/feeds/feeds.model');
 
 const PORT = process.env.PORT || 3001;
-const server = http.createServer(app);
+/** Self signed cert expires 7/23/2022 */
+const server = https.createServer(
+  {
+    key: fs.readFileSync(path.resolve('./src/key.pem')),
+    cert: fs.readFileSync(path.resolve('./src/cert.pem')),
+  },
+  app
+);
 
 async function startServer() {
   await mongoConnect();
