@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { setFeedTitle } from '../redux/feed_actions';
+import { setFeedTitle } from '../redux/feeds/feed_actions';
 
 const Navbar = () => {
   const { feedTitle, inviteLink } = useSelector((state) => state.feedReducer);

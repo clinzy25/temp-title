@@ -5,7 +5,7 @@ import {
   fetchFeedSuccess,
   fetchFeedError,
   FETCH_FEED_BEGIN,
-} from '../feed_actions';
+} from '../feeds/feed_actions';
 
 function* fetchFeedFlow(action) {
   try {

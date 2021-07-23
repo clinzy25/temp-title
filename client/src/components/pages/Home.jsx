@@ -1,17 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Auth from '../Auth';
 
-export const Home = () => (
-  <main>
-    <h1>Home / Landing Page</h1>
-    {/* TODO: This link will actually go to 'auth' when OAuth is setup
-    then to a 'setup feed' page */}
-    <Link to='/auth'>
-      <button type='button'>
-        Create a feed
-      </button>
-    </Link>
-  </main>
-);
+
+export const Home = () => {
+  const { isLoggedIn } = useSelector((state) => state.user_reducer);
+
+  const [isAuthOpen, setIsAuthOpen] = useState(false);
+
+  return (
+    <Wrapper>
+      <h1>Home / Landing Page</h1>
+      {isLoggedIn ? (
+        <Link to='/dashboard'>
+          <button type='button'>Go to Dashboard</button>
+        </Link>
+      ) : (
+        <button type='button' onClick={() => setIsAuthOpen(!isAuthOpen)}>
+          Login / Signup
+        </button>
+      )}
+      {isAuthOpen && <Auth />}
+    </Wrapper>
+  );
+};
+
+const Wrapper = styled.main`
+
+`;
 
 export default Home;

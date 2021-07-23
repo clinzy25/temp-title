@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Home } from './components/pages/Home';
 import HostFeed from './components/pages/HostFeed';
+import HostDashboard from './components/pages/HostDashboard';
 import Error from './components/pages/Error';
 
 const App = () => (
@@ -10,7 +11,10 @@ const App = () => (
       <Route exact path='/'>
         <Home />
       </Route>
-      {/* Todo: useParams for unique identifier, and PrivateRoute */}
+      {/* TODO: dashboard param */}
+      <Route exact path='/dashboard'>
+        <HostDashboard />
+      </Route>
       <Route exact path='/feeds/:id'>
         <HostFeed />
       </Route>

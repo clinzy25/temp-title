@@ -7,14 +7,14 @@ import MainInput from '../MainInput';
 import FeedContent from '../FeedContent';
 import LoadingFeed from '../LoadingFeed';
 
-import { fetchFeedBegin } from '../../redux/feed_actions';
+import { fetchFeedBegin } from '../../redux/feeds/feed_actions';
 import ErrorPost from '../ErrorPost';
 
 const HostFeed = () => {
   const dispatch = useDispatch();
 
   const { feedNumber, feed_loading, feed_error } = useSelector(
-    (state) => state.feedReducer
+    (state) => state.feed_reducer
   );
   const fetchFeed = async () => {
     await dispatch(fetchFeedBegin(feedNumber));

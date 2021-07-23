@@ -3,7 +3,8 @@ import {
 } from 'redux';
 import logger from 'redux-logger';
 import createSagaMilddleware from 'redux-saga';
-import feedReducer from './feed_reducer';
+import feed_reducer from './feeds/feed_reducer';
+import user_reducer from './user/user_reducer';
 import feedSaga from './sagas/feed_saga';
 
 const sagaMiddleware = createSagaMilddleware();
@@ -11,7 +12,8 @@ const sagaMiddleware = createSagaMilddleware();
 const middlewares = compose(applyMiddleware(sagaMiddleware, logger));
 
 const appReducer = combineReducers({
-  feedReducer
+  feed_reducer,
+  user_reducer,
 });
 
 const store = createStore(appReducer, middlewares);
