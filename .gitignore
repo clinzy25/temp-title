@@ -27,3 +27,4 @@ yarn-error.log*
 workspace.code-workspace
 cert.pem
 key.pem
+public/

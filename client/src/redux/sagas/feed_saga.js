@@ -1,5 +1,4 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
-
 import { fetchFeed } from '../../api';
 import {
   fetchFeedSuccess,

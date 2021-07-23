@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { GoogleLogin } from 'react-google-login';
 import styled from 'styled-components';
-
-const responseGoogle = (response) => {
-  console.log(response);
-};
+import { authFlowBegin } from '../redux/user/user_actions';
 
 const Auth = () => {
   const [isSignUpForm, setIsSignUpForm] = useState(false);
+  const dispatch = useDispatch();
+  const responseGoogle = (response) => {
+    console.log(response);
+  };
+
+  const startAuthFlow = async () => {
+    await dispatch(authFlowBegin());
+  };
 
   const SwitchFormsBtn = () => (
     <button type='button' onClick={() => setIsSignUpForm(!isSignUpForm)}>
@@ -17,7 +23,7 @@ const Auth = () => {
 
   return (
     <Wrapper>
-      <GoogleLogin
+      {/* <GoogleLogin
         clientId='658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com'
         buttonText={
           isSignUpForm ? 'Sign up with Google' : 'Sign in with Google'
@@ -25,7 +31,10 @@ const Auth = () => {
         onSuccess={responseGoogle}
         onFailure={responseGoogle}
         cookiePolicy='single_host_origin'
-      />
+      /> */}
+      <button type='button' onClick={startAuthFlow}>
+        Google sign in
+      </button>
       {isSignUpForm && <input type='text' placeholder='Username' />}
       <input type='text' placeholder='Email' />
       <input type='text' placeholder='Password' />
