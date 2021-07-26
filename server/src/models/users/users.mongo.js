@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 
 const usersSchema = new mongoose.Schema({
+  provider: {
+    type: String,
+    required: true,
+  },
   userName: {
     type: String,
     required: true,
@@ -9,18 +13,17 @@ const usersSchema = new mongoose.Schema({
     type: String,
     required: false,
   },
-  password: {
-    type: String,
-    required: true,
-  },
+  password: String,
+  avatar: String,
   displayName: {
     type: String,
-    required: true,
   },
   feeds: {
-    type: [Object],
+    type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Feed' }],
     required: true,
   },
 });
 
-module.exports = mongoose.model('User', usersSchema);
+const User = mongoose.model('User', usersSchema);
+
+module.exports = User;

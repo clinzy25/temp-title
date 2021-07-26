@@ -1,5 +1,6 @@
 const { Strategy } = require('passport-google-oauth20');
 const passport = require('passport');
+const User = require('./models/users/users.mongo');
 
 const AUTH_OPTIONS = {
   callbackURL: '/auth/google/callback',
@@ -7,9 +8,33 @@ const AUTH_OPTIONS = {
   clientSecret: process.env.CLIENT_SECRET,
 };
 
-function verifyCallback(accessToken, refreshToken, profile, done) {
-  console.log('Google Profile: ', profile);
-  done(null, profile);
+async function verifyCallback(accessToken, refreshToken, profile, done) {
+  // console.log('Google Profile: ', profile);
+  try {
+    const existingUser = await User.findOne({ email: profile.email });
+    if (existingUser) {
+      return done(null, existingUser);
+    }
+  } catch (e) {
+    console.error(e);
+  }
+
+  try {
+    const newUser = await new User({
+      provider: 'google',
+      userName: `user${profile.id}`,
+      email: profile._json.email,
+      displayName: profile.displayName,
+      avatar: profile._json.picture,
+    });
+    User.create(newUser, () => {
+      console.log('New user added to db');
+    });
+    done(null, newUser);
+  } catch (e) {
+    console.error(e);
+  }
+  return null;
 }
 
 const googleStrategy = new Strategy(AUTH_OPTIONS, verifyCallback);
