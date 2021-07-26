@@ -9,9 +9,8 @@ const AUTH_OPTIONS = {
 };
 
 async function verifyCallback(accessToken, refreshToken, profile, done) {
-  // console.log('Google Profile: ', profile);
   try {
-    const existingUser = await User.findOne({ email: profile.email });
+    const existingUser = await User.findOne({ email: profile._json.email });
     if (existingUser) {
       return done(null, existingUser);
     }
@@ -45,7 +44,9 @@ passport.serializeUser((user, done) => {
 
 // TODO: lookup user by id and return from database
 passport.deserializeUser((id, done) => {
-  done(null, id);
+  User.findById(id, (err, user) => {
+    done(err, user);
+  });
 });
 
 function checkIsLoggedIn(req, res, next) {

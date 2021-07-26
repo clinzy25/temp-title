@@ -17,7 +17,7 @@ authRouter.get(
   passport.authenticate('google', {
     // TODO: Redirect to Dashboard and some kind of error page
     failureRedirect: '/failure',
-    successRedirect: CLIENT_URL,
+    successRedirect: `${CLIENT_URL}/feeds`,
   }),
   (req, res) => {
     console.log('google called back');
@@ -29,6 +29,13 @@ authRouter.get('/failure', (req, res) => res.send('Failed to log in'));
 authRouter.get('/logout', (req, res) => {
   req.logout();
   res.redirect(CLIENT_URL);
+});
+
+authRouter.get('/users', (req, res) => {
+  if (req.user) {
+    return res.json(req.user);
+  }
+  return res.json({});
 });
 
 module.exports = authRouter;
