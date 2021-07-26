@@ -1,56 +1,42 @@
 import {
-  AUTH_FLOW_BEGIN,
-  AUTH_FLOW_ERROR,
-  AUTH_FLOW_SUCCESS,
-  LOGOUT_BEGIN,
-  LOGOUT_ERROR,
-  LOGOUT_SUCCESS,
+  FETCH_USER_BEGIN,
+  FETCH_USER_ERROR,
+  FETCH_USER_SUCCESS,
+  LOGOUT,
 } from './user_actions';
 
 const initialState = {
   user: null,
-  isLoggedIn: true,
+  isAuthenticated: false,
   user_error: false,
-  user_loading: false,
+  user_loading: true,
 };
 
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
-    case AUTH_FLOW_BEGIN:
+    case FETCH_USER_BEGIN:
       return {
         ...state,
         user_loading: true,
       };
-    case AUTH_FLOW_ERROR:
+    case FETCH_USER_ERROR:
       return {
         ...state,
         user_error: true,
         user_loading: false,
       };
-    case AUTH_FLOW_SUCCESS:
+    case FETCH_USER_SUCCESS:
       return {
         ...state,
         user: action.payload,
-        isLoggedIn: true,
+        isAuthenticated: true,
         user_loading: false,
       };
-    case LOGOUT_BEGIN:
-      return {
-        ...state,
-        user_loading: true,
-      };
-    case LOGOUT_ERROR:
-      return {
-        ...state,
-        user_error: true,
-        user_loading: false,
-      };
-    case LOGOUT_SUCCESS:
+    case LOGOUT:
       return {
         ...state,
         user: null,
-        isLoggedIn: false,
-        user_loading: false,
+        isAuthenticated: false,
       };
     default:
       return state;

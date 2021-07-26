@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { setFeedTitle } from '../redux/feeds/feed_actions';
 
 const Navbar = () => {
-  const { feedTitle, inviteLink } = useSelector((state) => state.feedReducer);
+  const { feedTitle, inviteLink } = useSelector((state) => state.feed_reducer);
   const dispatch = useDispatch();
   /** For styles only */
   const [isEditingFeedTitle, setisEditingFeedTitle] = useState(false);

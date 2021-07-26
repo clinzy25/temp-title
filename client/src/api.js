@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:3001';
+const API_URL = 'https://localhost:3001';
 
 export const fetchFeed = async (feedNumber) => {
   try {
@@ -12,20 +12,12 @@ export const fetchFeed = async (feedNumber) => {
   }
 };
 
-export const authenticateUser = async () => {
+export const fetchUser = async () => {
   try {
-    const response = await axios.get(`${API_URL}/auth/google`);
-    return response.data;
-  } catch (e) {
-    console.error(e);
-    return e;
-  }
-};
-
-export const logout = async () => {
-  try {
-    const response = await axios.get(`${API_URL}/auth/logout`);
-    return response.data;
+    const response = await axios.get(`${API_URL}/auth/users`, {
+      withCredentials: true,
+    });
+    return response;
   } catch (e) {
     console.error(e);
     return e;

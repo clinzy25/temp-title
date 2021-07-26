@@ -1,55 +1,24 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { GoogleLogin } from 'react-google-login';
 import styled from 'styled-components';
-import { authFlowBegin } from '../redux/user/user_actions';
 
 const Auth = () => {
   const [isSignUpForm, setIsSignUpForm] = useState(false);
-  const dispatch = useDispatch();
-  const responseGoogle = (response) => {
-    console.log(response);
-  };
 
-  const startAuthFlow = async () => {
-    await dispatch(authFlowBegin());
-  };
-
-  const SwitchFormsBtn = () => (
-    <button type='button' onClick={() => setIsSignUpForm(!isSignUpForm)}>
-      {isSignUpForm ? 'Sign in' : 'Sign up'}
-    </button>
-  );
+  const AUTH_URL = 'https://localhost:3001/auth/google';
 
   return (
     <Wrapper>
-      {/* <GoogleLogin
-        clientId='658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com'
-        buttonText={
-          isSignUpForm ? 'Sign up with Google' : 'Sign in with Google'
-        }
-        onSuccess={responseGoogle}
-        onFailure={responseGoogle}
-        cookiePolicy='single_host_origin'
-      /> */}
-      <button type='button' onClick={startAuthFlow}>
-        Google sign in
-      </button>
+      <a href={AUTH_URL}>Google</a>
       {isSignUpForm && <input type='text' placeholder='Username' />}
       <input type='text' placeholder='Email' />
       <input type='text' placeholder='Password' />
       <div className='switch-forms'>
-        {isSignUpForm ? (
-          <>
-            <span>Already have an account?</span>
-            <SwitchFormsBtn />
-          </>
-        ) : (
-          <>
-            <span>Don&apos;t have an account?</span>
-            <SwitchFormsBtn />
-          </>
-        )}
+        <span>
+          {isSignUpForm ? 'Already have an account?' : "Don't have an account?"}
+        </span>
+        <button type='button' onClick={() => setIsSignUpForm(!isSignUpForm)}>
+          {isSignUpForm ? 'Sign in' : 'Sign up'}
+        </button>
       </div>
     </Wrapper>
   );

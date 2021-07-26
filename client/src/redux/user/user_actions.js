@@ -1,18 +1,18 @@
-export const AUTH_FLOW_BEGIN = 'AUTH_FLOW_BEGIN';
-export const AUTH_FLOW_ERROR = 'AUTH_FLOW_BEGIN';
-export const AUTH_FLOW_SUCCESS = 'AUTH_FLOW_BEGIN';
+export const FETCH_USER_BEGIN = 'FETCH_USER_BEGIN';
+export const FETCH_USER_ERROR = 'FETCH_USER_ERROR';
+export const FETCH_USER_SUCCESS = 'FETCH_USER_SUCCESS';
 
-export const authFlowBegin = () => ({ type: AUTH_FLOW_BEGIN });
-export const authFlowError = () => ({ type: AUTH_FLOW_ERROR });
-export const authFlowSuccess = (user) => ({
-  type: AUTH_FLOW_SUCCESS,
+export const fetchUserBegin = () => ({
+  type: FETCH_USER_BEGIN,
+});
+export const fetchUserError = () => ({ type: FETCH_USER_ERROR });
+export const fetchUserSuccess = (user) => ({
+  type: FETCH_USER_SUCCESS,
   payload: user,
 });
 
-export const LOGOUT_BEGIN = 'LOGOUT_BEGIN';
-export const LOGOUT_ERROR = 'LOGOUT_BEGIN';
-export const LOGOUT_SUCCESS = 'LOGOUT_BEGIN';
+export const LOGOUT = 'LOGOUT';
 
-export const logoutBegin = (user) => ({ type: LOGOUT_BEGIN, payload: user });
-export const logoutError = () => ({ type: LOGOUT_ERROR });
-export const logoutSuccess = () => ({ type: LOGOUT_SUCCESS });
+export const logout = () => ({
+  type: logout,
+});

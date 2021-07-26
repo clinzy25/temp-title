@@ -1,38 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import HostFeed from './HostFeed';
 import Auth from '../Auth';
-import { logoutBegin } from '../../redux/user/user_actions';
+import { fetchUserBegin, logout } from '../../redux/user/user_actions';
 
 export const Home = () => {
   const { isLoggedIn } = useSelector((state) => state.user_reducer);
+  const dispatch = useDispatch();
 
   const [isAuthOpen, setIsAuthOpen] = useState(false);
-  const dispatch = useDispatch();
-  
-  const logout = async () => {
-    await dispatch(logoutBegin());
+
+  const startLogout = () => {
+    dispatch(logout());
   };
+
+  useEffect(() => {
+    dispatch(fetchUserBegin());
+  }, []);
 
   return (
     <Wrapper>
       <h1>Home / Landing Page</h1>
       {isLoggedIn ? (
-        <>
-          <Link to='/dashboard'>
-            <button type='button'>Go to Dashboard</button>
-          </Link>
-          <Link to='/'>
-            <button type='button' onClick={logout}>
-              Logout
-            </button>
-          </Link>
-        </>
+        <HostFeed />
       ) : (
-        <button type='button' onClick={() => setIsAuthOpen(!isAuthOpen)}>
-          Login / Signup
-        </button>
+        <>
+          <button type='button' onClick={() => setIsAuthOpen(!isAuthOpen)}>
+            Login / Signup
+          </button>
+          <a onClick={startLogout} href='https://localhost:3001/auth/logout'>
+            Logout
+          </a>
+        </>
       )}
       {isAuthOpen && <Auth />}
     </Wrapper>
