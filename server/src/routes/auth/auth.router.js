@@ -20,7 +20,7 @@ authRouter.get(
     successRedirect: `${CLIENT_URL}/feeds`,
   }),
   (req, res) => {
-    console.log('google called back');
+    console.log('Google called back');
   }
 );
 
@@ -35,7 +35,7 @@ authRouter.get('/users', (req, res) => {
   if (req.user) {
     return res.json(req.user);
   }
-  return res.json({});
+  return res.json({ error: 'User not found' });
 });
 
 module.exports = authRouter;
