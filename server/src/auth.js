@@ -1,6 +1,7 @@
 const { Strategy } = require('passport-google-oauth20');
 const passport = require('passport');
 const User = require('./models/users/users.mongo');
+require('dotenv').config();
 
 const AUTH_OPTIONS = {
   callbackURL: '/auth/google/callback',
