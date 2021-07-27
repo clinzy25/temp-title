@@ -18,7 +18,11 @@ const config = {
   COOKIE_KEY_2: process.env.COOKIE_KEY_2,
 };
 
-app.use(helmet());
+app.use(
+  helmet({
+    contentSecurityPolicy: false,
+  })
+);
 app.use(
   cookieSession({
     name: 'cookie-session',

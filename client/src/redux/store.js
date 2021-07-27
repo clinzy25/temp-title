@@ -1,4 +1,6 @@
-import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
+import {
+  createStore, combineReducers, applyMiddleware, compose
+} from 'redux';
 import logger from 'redux-logger';
 import createSagaMilddleware from 'redux-saga';
 import { all, fork } from 'redux-saga/effects';
