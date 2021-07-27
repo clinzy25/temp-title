@@ -1,5 +1,6 @@
 process.env.PORT = 3001;
-process.env.MONGO_URL = 'mongodb://localhost/temp-title';
+process.env.MONGO_URL =
+  'mongodb+srv://conner:tesseracT1!@cluster0.2snlz.mongodb.net/temp-title?retryWrites=true&w=majority';
 process.env.CLIENT_ID =
   '692783999362-10uan3vf4vsb2k06jk66mati8lebbsk3.apps.googleusercontent.com';
 process.env.CLIENT_SECRET = 'SV9uZTyNs0pBosN-oJKHPc4z';
