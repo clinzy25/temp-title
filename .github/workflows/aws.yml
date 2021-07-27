@@ -11,10 +11,10 @@ jobs:
     env:
       CI: true
       MONGO_URL: mongodb://localhost/testdb
-      CLIENT_ID: ${{env.CLIENT_ID}}
-      CLIENT_SECRET: ${{env.CLIENT_SECRET}}
-      COOKIE_KEY_1: ${{env.COOKIE_KEY_1}}
-      COOKIE_KEY_2: ${{env.COOKIE_KEY_2}}
+      CLIENT_ID: ${{secrets.CLIENT_ID}}
+      CLIENT_SECRET: ${{secrets.CLIENT_SECRET}}
+      COOKIE_KEY_1: ${{secrets.COOKIE_KEY_1}}
+      COOKIE_KEY_2: ${{secrets.COOKIE_KEY_2}}
     strategy:
       matrix: 
         node-version: [14.x, 16.x]
