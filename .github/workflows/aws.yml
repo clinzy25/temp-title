@@ -11,10 +11,6 @@ jobs:
     env:
       CI: true
       MONGO_URL: mongodb://localhost/testdb
-      CLIENT_ID: ${{ secrets.CLIENT_ID }}
-      CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
-      COOKIE_KEY_1: ${{ secrets.COOKIE_KEY_1 }}
-      COOKIE_KEY_2: ${{ secrets.COOKIE_KEY_1 }}
     strategy:
       matrix: 
         node-version: [14.x, 16.x]
@@ -23,6 +19,11 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js version ${{ matrix.node-version }}
+      env:
+        CLIENT_ID: ${{ secrets.CLIENT_ID }}
+        CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+        COOKIE_KEY_1: ${{ secrets.COOKIE_KEY_1 }}
+        COOKIE_KEY_2: ${{ secrets.COOKIE_KEY_1 }}
       uses: actions/setup-node@v2
       with: 
         node-version: ${{ matrix.node-version }}
