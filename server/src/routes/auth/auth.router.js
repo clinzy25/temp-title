@@ -33,9 +33,11 @@ authRouter.get('/logout', (req, res) => {
 
 authRouter.get('/users', (req, res) => {
   if (req.user) {
-    res.status(200).json(req.user);
+    return res.status(200).json(req.user, {
+      ok: true,
+    });
   }
-  res.status(404).json({ error: 'User not found' });
+  return res.status(404).json({ error: 'User not found' });
 });
 
 module.exports = authRouter;
