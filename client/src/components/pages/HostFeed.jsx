@@ -7,7 +7,7 @@ import FeedContent from '../FeedContent';
 import Loading from '../Loading';
 import Error from '../Error';
 import { fetchUserBegin } from '../../redux/user/user_actions';
-import CreateFeed from './CreateFeed';
+import CreateFeed from '../CreateFeed';
 import { fetchFeedBegin } from '../../redux/feed/feed_actions';
 
 const HostFeed = () => {
@@ -27,7 +27,6 @@ const HostFeed = () => {
 
   useEffect(() => {
     if (user && user.feeds.length !== 0 && !feed_loading) {
-      console.log(user.feeds.length);
       dispatch(fetchFeedBegin(user._id));
     }
   }, [user]);

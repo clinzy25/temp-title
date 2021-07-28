@@ -30,21 +30,16 @@ const feedReducer = (state = initialState, action) => {
         feed_error: true,
         feed_loading: false,
       };
-    case FETCH_FEED_SUCCESS:
-      /** TODO: destructuring acting weird */
-      return {
-        ...state,
-        feedTitle: action.payload.feedTitle,
-        inviteLink: action.payload.inviteLink,
-        feed_loading: false,
-      };
     case CREATE_FEED_SUCCESS:
+    case FETCH_FEED_SUCCESS: {
+      const { feedTitle, inviteLink } = action.payload;
       return {
         ...state,
-        feedTitle: action.payload.feedTitle,
-        inviteLink: action.payload.inviteLink,
+        feedTitle,
+        inviteLink,
         feed_loading: false,
       };
+    }
     default:
       return state;
   }
