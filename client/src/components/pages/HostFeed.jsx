@@ -1,19 +1,16 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import Navbar from '../Navbar';
 import MainInput from '../MainInput';
 import FeedContent from '../FeedContent';
-import LoadingFeed from '../LoadingFeed';
-import ErrorPost from '../ErrorPost';
+import Loading from '../Loading';
+import Error from '../Error';
 import { fetchUserBegin } from '../../redux/user/user_actions';
-import { createFeedBegin } from '../../redux/feeds/feed_actions';
+import CreateFeed from './CreateFeed';
 
 const HostFeed = () => {
   const dispatch = useDispatch();
-
-  const feedNameRef = useRef(null);
-
   const { feed_loading, feed_error } = useSelector(
     (state) => state.feed_reducer
   );
@@ -21,33 +18,20 @@ const HostFeed = () => {
     (state) => state.user_reducer
   );
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    const feedData = {
-      host_id: user._id,
-      feedTitle: feedNameRef.current.value,
-    };
-
-    await dispatch(createFeedBegin(feedData));
-  };
+  const [createdFirstFeed, setCreatedFirstFeed] = useState(false);
 
   useEffect(() => {
     dispatch(fetchUserBegin());
   }, []);
 
-  if (feed_loading || user_loading) return <LoadingFeed />;
-  if (feed_error || user_error) return <ErrorPost />;
-  if (user.feeds.length === 0) {
-    return (
-      <form>
-        <span>Type a name for the feed: </span>
-        <input ref={feedNameRef} type='text' />
-        <button onClick={handleSubmit} type='submit'>
-          Start a Feed
-        </button>
-      </form>
-    );
+  if (feed_loading || user_loading) {
+    return <Loading />;
+  }
+  if (feed_error || user_error) {
+    return <Error />;
+  }
+  if (user && user.feeds.length === 0 && !createdFirstFeed) {
+    return <CreateFeed user={user} setCreatedFirstFeed={setCreatedFirstFeed} />;
   }
   return (
     <Wrapper>

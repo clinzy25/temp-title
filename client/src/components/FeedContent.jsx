@@ -2,7 +2,7 @@ import React from 'react';
 import TextPost from './TextPost';
 import ImagePost from './ImagePost';
 import VideoPost from './VideoPost';
-import ErrorPost from './ErrorPost';
+import ErrorPost from './Error';
 
 const FeedContent = () => {
   const postType = 'detect post type';

@@ -7,13 +7,15 @@ import { fetchUserBegin } from '../../redux/user/user_actions';
 import LogoutBtn from '../LogoutBtn';
 
 export const Home = () => {
-  const { isAuthenticated } = useSelector((state) => state.user_reducer);
+  const { isAuthenticated } = useSelector((state) => state);
   const dispatch = useDispatch();
 
-  const [isAuthOpen, setIsAuthOpen] = useState(false);
+  const [authModal, setAuthModal] = useState(false);
 
   useEffect(() => {
-    dispatch(fetchUserBegin());
+    if (isAuthenticated) {
+      dispatch(fetchUserBegin());
+    }
   }, []);
 
   return (
@@ -23,13 +25,13 @@ export const Home = () => {
       ) : (
         <>
           <h1>Home / Landing Page</h1>
-          <button type='button' onClick={() => setIsAuthOpen(!isAuthOpen)}>
+          <button type='button' onClick={() => setAuthModal(!authModal)}>
             Login / Signup
           </button>
           <LogoutBtn />
         </>
       )}
-      {isAuthOpen && <Auth />}
+      {authModal && <Auth />}
     </Wrapper>
   );
 };
