@@ -23,3 +23,13 @@ export const fetchUser = async () => {
     return e;
   }
 };
+
+export const createFeed = async (feed) => {
+  try {
+    const response = await axios.post(`${API_URL}/feeds`, feed);
+    return response.data;
+  } catch (e) {
+    console.error(e);
+    return e;
+  }
+};

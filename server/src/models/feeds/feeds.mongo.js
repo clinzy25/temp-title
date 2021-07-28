@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
 
 const feedsSchema = new mongoose.Schema({
-  feedNumber: {
-    type: Number,
+  host_id: {
+    type: 'ObjectId',
+    ref: 'User',
     required: true,
   },
   feedTitle: {
@@ -27,6 +28,10 @@ const feedsSchema = new mongoose.Schema({
   },
   removedSubscribers: {
     type: [Object],
+    required: true,
+  },
+  lastActive: {
+    type: Boolean,
     required: true,
   },
 });

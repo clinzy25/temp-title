@@ -3,7 +3,7 @@ const { httpGetFeed, httpCreateFeed } = require('./feeds.controller');
 
 const feedsRouter = express.Router();
 
-feedsRouter.get('/:id', httpGetFeed);
+feedsRouter.get('/', httpGetFeed);
 feedsRouter.post('/', httpCreateFeed);
 
 module.exports = feedsRouter;

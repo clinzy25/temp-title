@@ -1,4 +1,6 @@
+const mongoose = require('mongoose');
 const feeds = require('./feeds.mongo');
+const users = require('../users/users.mongo');
 
 async function findFeed(id) {
   try {
@@ -11,44 +13,28 @@ async function findFeed(id) {
   }
 }
 
-async function saveFeedToDb(feed) {
-  await feeds.findOneAndUpdate(
-    {
-      feedNumber: feed.feedNumber,
-    },
-    feed,
-    {
-      upsert: true,
-    }
-  );
-}
-
 /** TODO: generate links */
 function generateInviteLink() {
   return 'Temp-link';
 }
 
-async function getLastFeedNumber() {
-  const lastFeed = await feeds.findOne().sort('-feedNumber');
-  if (!lastFeed) {
-    return 1;
-  }
-  return lastFeed.feedNumber;
-}
-
 async function addFeed(feed) {
-  const feedNumber = (await getLastFeedNumber()) + 1;
-  /** TODO: remove .concat */
-  const inviteLink = generateInviteLink().concat(feedNumber);
+  const inviteLink = generateInviteLink();
 
   const newFeed = Object.assign(feed, {
-    feedNumber,
-    inviteLink,
+    _id: new mongoose.Types.ObjectId(),
     posts: [],
+    canSubsPost: false,
+    inviteLink,
     subscribers: [],
     removedSubscribers: [],
+    lastActive: true,
   });
-  await saveFeedToDb(newFeed);
+  await users.updateOne(
+    { _id: feed.host_id },
+    { $push: { feeds: newFeed._id } }
+  );
+  await feeds.create(newFeed);
   return newFeed;
 }
 
@@ -56,18 +42,19 @@ async function addFeed(feed) {
  * Insert mock data
  */
 const mockFeed = {
-  feedNumber: 1,
+  host_id: '60fee6c8505ba042ec0bdd55',
   feedTitle: 'Temp-title',
   posts: [],
   canSubsPost: false,
   inviteLink: 'temp-link',
   subscribers: [],
   removedSubscribers: [],
+  lastActive: true,
 };
 
 async function insertTempData() {
   // await feeds.deleteMany({});
-  await saveFeedToDb(mockFeed);
+  // await feeds.create(mockFeed);
 }
 
 module.exports = {

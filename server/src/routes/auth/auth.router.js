@@ -3,10 +3,7 @@ const passport = require('passport');
 
 const authRouter = express.Router();
 
-const CLIENT_URL =
-  process.env.NODE_ENV === 'production'
-    ? 'https://localhost:3001'
-    : 'http://localhost:3000';
+const CLIENT_URL = process.env.NODE_ENV === 'production' ? 'https://localhost:3001' : 'http://localhost:3000';
 
 authRouter.get(
   '/google',

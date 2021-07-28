@@ -20,6 +20,7 @@ module.exports = {
     'import/no-extraneous-dependencies': 0,
     camelcase: 0,
     'no-console': 0,
+    'no-underscore-dangle': 0,
   },
   settings: {
     react: {

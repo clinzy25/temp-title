@@ -6,7 +6,7 @@ import Auth from '../Auth';
 import { fetchUserBegin, logout } from '../../redux/user/user_actions';
 
 export const Home = () => {
-  const { isLoggedIn } = useSelector((state) => state.user_reducer);
+  const { isAuthenticated } = useSelector((state) => state.user_reducer);
   const dispatch = useDispatch();
 
   const [isAuthOpen, setIsAuthOpen] = useState(false);
@@ -21,11 +21,11 @@ export const Home = () => {
 
   return (
     <Wrapper>
-      <h1>Home / Landing Page</h1>
-      {isLoggedIn ? (
+      {isAuthenticated ? (
         <HostFeed />
       ) : (
         <>
+          <h1>Home / Landing Page</h1>
           <button type='button' onClick={() => setIsAuthOpen(!isAuthOpen)}>
             Login / Signup
           </button>
