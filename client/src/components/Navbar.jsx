@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { setFeedTitle } from '../redux/feeds/feed_actions';
+import LogoutBtn from './LogoutBtn';
 
 const Navbar = () => {
   const { feedTitle, inviteLink } = useSelector((state) => state.feed_reducer);
@@ -26,7 +26,7 @@ const Navbar = () => {
         }}
       />
       {inviteLink}
-      <Link to='/'>Logout</Link>
+      <LogoutBtn />
     </Wrapper>
   );
 };

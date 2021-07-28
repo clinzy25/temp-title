@@ -3,17 +3,14 @@ import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 import HostFeed from './HostFeed';
 import Auth from '../Auth';
-import { fetchUserBegin, logout } from '../../redux/user/user_actions';
+import { fetchUserBegin } from '../../redux/user/user_actions';
+import LogoutBtn from '../LogoutBtn';
 
 export const Home = () => {
   const { isAuthenticated } = useSelector((state) => state.user_reducer);
   const dispatch = useDispatch();
 
   const [isAuthOpen, setIsAuthOpen] = useState(false);
-
-  const startLogout = () => {
-    dispatch(logout());
-  };
 
   useEffect(() => {
     dispatch(fetchUserBegin());
@@ -29,9 +26,7 @@ export const Home = () => {
           <button type='button' onClick={() => setIsAuthOpen(!isAuthOpen)}>
             Login / Signup
           </button>
-          <a onClick={startLogout} href='https://localhost:3001/auth/logout'>
-            Logout
-          </a>
+          <LogoutBtn />
         </>
       )}
       {isAuthOpen && <Auth />}
