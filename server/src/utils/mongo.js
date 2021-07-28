@@ -11,12 +11,16 @@ mongoose.connection.on('error', (err) => {
 });
 
 async function mongoConnect() {
-  await mongoose.connect(MONGO_URL, {
-    useNewUrlParser: true,
-    useFindAndModify: false,
-    useCreateIndex: true,
-    useUnifiedTopology: true,
-  });
+  try {
+    await mongoose.connect(MONGO_URL, {
+      useNewUrlParser: true,
+      useFindAndModify: false,
+      useCreateIndex: true,
+      useUnifiedTopology: true,
+    });
+  } catch (e) {
+    console.error('Could not connect to db', e);
+  }
 }
 
 async function mongoDisconnect() {

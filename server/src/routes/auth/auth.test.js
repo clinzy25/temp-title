@@ -1,15 +1,18 @@
 const request = require('supertest');
+const dotenv = require('dotenv');
 const app = require('../../app');
 const { insertTempData } = require('../../models/feeds/feeds.model');
 const { mongoConnect, mongoDisconnect } = require('../../utils/mongo');
 
 describe('Users API', () => {
   beforeAll(async () => {
+    dotenv.config();
     await mongoConnect();
     await insertTempData();
   });
+
   afterAll(async () => {
-    mongoDisconnect();
+    await mongoDisconnect();
   });
 
   describe('Test GET /users', () => {
@@ -19,7 +22,7 @@ describe('Users API', () => {
         userName: 'testUser01',
         email: 'test@gmail.com',
         displayName: 'Test User',
-        avatar: 'testimg.url',
+        avatar: 'testing.url',
       };
       const response = await request(app)
         .get('/users', (req, res) => {
