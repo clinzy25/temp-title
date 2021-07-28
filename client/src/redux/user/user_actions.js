@@ -14,5 +14,5 @@ export const fetchUserSuccess = (user) => ({
 export const LOGOUT = 'LOGOUT';
 
 export const logout = () => ({
-  type: logout,
+  type: LOGOUT,
 });
