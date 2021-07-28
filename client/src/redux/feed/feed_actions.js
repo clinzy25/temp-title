@@ -13,9 +13,9 @@ export const FETCH_FEED_BEGIN = 'FETCH_FEED_BEGIN';
 export const FETCH_FEED_SUCCESS = 'FETCH_FEED_SUCCESS';
 export const FETCH_FEED_ERROR = 'FETCH_FEED_ERROR';
 
-export const fetchFeedBegin = (feedNumber) => ({
+export const fetchFeedBegin = (userId) => ({
   type: FETCH_FEED_BEGIN,
-  payload: feedNumber,
+  payload: userId,
 });
 
 export const fetchFeedSuccess = (feed) => ({

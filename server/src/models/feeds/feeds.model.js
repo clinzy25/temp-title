@@ -2,13 +2,11 @@ const mongoose = require('mongoose');
 const feeds = require('./feeds.mongo');
 const users = require('../users/users.mongo');
 
-async function findFeed(id) {
+async function findFeed(userId) {
   try {
-    return await feeds.findOne({
-      feedNumber: id,
-    });
+    return await feeds.findOne({ host_id: userId, lastActive: true});
   } catch (error) {
-    console.error(`Could not find feed ${id}`);
+    console.error('Could not find feed');
     return error;
   }
 }

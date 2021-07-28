@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
-import { setFeedTitle } from '../redux/feeds/feed_actions';
+import { setFeedTitle } from '../redux/feed/feed_actions';
 import LogoutBtn from './LogoutBtn';
 
 const Navbar = () => {

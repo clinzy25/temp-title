@@ -7,11 +7,10 @@ import {
   CREATE_FEED_BEGIN,
   createFeedSuccess,
   createFeedError,
-} from '../feeds/feed_actions';
+} from './feed_actions';
 
 function* fetchFeedFlow(action) {
   try {
-    /** TODO: add action.payload as unique feed id */
     const response = yield call(fetchFeed, action.payload);
     yield put(fetchFeedSuccess(response));
   } catch {

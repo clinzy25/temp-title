@@ -1,7 +1,6 @@
 import React, { useRef } from 'react';
 import { useDispatch } from 'react-redux';
-import { createFeedBegin } from '../../redux/feeds/feed_actions';
-import { fetchUserBegin } from '../../redux/user/user_actions';
+import { createFeedBegin } from '../../redux/feed/feed_actions';
 
 const CreateFeed = ({ user, setCreatedFirstFeed }) => {
   const feedNameRef = useRef(null);

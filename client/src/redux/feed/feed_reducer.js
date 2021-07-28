@@ -12,6 +12,7 @@ const initialState = {
   inviteLink: '',
   feed_loading: false,
   feed_error: false,
+  lastActive: true,
 };
 
 const feedReducer = (state = initialState, action) => {
@@ -33,7 +34,6 @@ const feedReducer = (state = initialState, action) => {
       /** TODO: destructuring acting weird */
       return {
         ...state,
-        feedNumber: action.payload.feedNumber,
         feedTitle: action.payload.feedTitle,
         inviteLink: action.payload.inviteLink,
         feed_loading: false,

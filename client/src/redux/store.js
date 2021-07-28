@@ -4,10 +4,10 @@ import {
 import logger from 'redux-logger';
 import createSagaMilddleware from 'redux-saga';
 import { all, fork } from 'redux-saga/effects';
-import feed_reducer from './feeds/feed_reducer';
+import feed_reducer from './feed/feed_reducer';
 import user_reducer from './user/user_reducer';
-import feedSaga from './sagas/feed_saga';
-import userSaga from './sagas/user_saga';
+import feedSaga from './feed/feed_saga';
+import userSaga from './user/user_saga';
 
 const sagaMiddleware = createSagaMilddleware();
 

@@ -3,7 +3,7 @@ import {
   FETCH_USER_BEGIN,
   fetchUserSuccess,
   fetchUserError,
-} from '../user/user_actions';
+} from './user_actions';
 import { fetchUser } from '../../api';
 
 function* fetchUserFlow() {

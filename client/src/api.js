@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-const API_URL = 'https://localhost:3001';
+const API_URL = process.env.REACT_APP_API_URL;
 
-export const fetchFeed = async (feedNumber) => {
+export const fetchFeed = async (userId) => {
   try {
-    const response = await axios.get(`${API_URL}/feeds/${feedNumber}`);
+    const response = await axios.post(`${API_URL}/feeds`, { userId });
     return response.data;
   } catch (e) {
     console.error(e);
@@ -26,7 +26,7 @@ export const fetchUser = async () => {
 
 export const createFeed = async (feed) => {
   try {
-    const response = await axios.post(`${API_URL}/feeds`, feed);
+    const response = await axios.post(`${API_URL}/feeds/create`, feed);
     return response.data;
   } catch (e) {
     console.error(e);
