@@ -35,7 +35,15 @@ describe('Users API', () => {
 
   describe('Test GET /feeds', () => {
     test('Should respond with 200 success', async () => {
-      const response = await request(app).get('/feeds').expect(200);
+      const response = await (
+        await request(app).post('/feeds/create')
+      )
+        .send({
+          host_id: 10510540804,
+          feedTitle: 'newFeed',
+        })
+        .expect('Content-Type', /json/)
+        .expect(200);
     });
   });
 });
