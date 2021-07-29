@@ -35,13 +35,8 @@ describe('Users API', () => {
   describe('Test GET /feeds', () => {
     test('Should respond with 201 created', async () => {
       const response = await request(app)
-        .post('/feeds/create')
-        .send({
-          host_id: 10510540804,
-          feedTitle: 'newFeed',
-        })
-        .expect('Content-Type', /json/)
-        .expect(201);
+        .post('/')
+        .expect(200);
     });
   });
 });
