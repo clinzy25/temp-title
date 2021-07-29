@@ -3,7 +3,6 @@ const dotenv = require('dotenv');
 const app = require('../../app');
 const { insertTempData } = require('../../models/feeds/feeds.model');
 const { mongoConnect, mongoDisconnect } = require('../../utils/mongo');
-const { expectCt } = require('helmet');
 
 describe('Users API', () => {
   beforeAll(async () => {
@@ -27,7 +26,6 @@ describe('Users API', () => {
       };
       const response = await request(app)
         .get('/users', (req, res) => {
-          req.setHeader('user', { newUser });
         })
         .expect(200);
     });
