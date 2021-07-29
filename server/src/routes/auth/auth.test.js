@@ -18,20 +18,16 @@ describe('Users API', () => {
 
   describe('Test GET /users', () => {
     test('Should respond with 200 success', async () => {
-      // const newUser = {
-      //   provider: 'google',
-      //   userName: 'testUser01',
-      //   email: 'test@gmail.com',
-      //   displayName: 'Test User',
-      //   avatar: 'testing.url',
-      // };
-      // const response = await request(app)
-      //   .get('/users', (req, res) => {
-      //     req.setHeader('user', { newUser });
-      //   })
-      //   .expect(200);
-      const response = 200;
-      expect(response).toBe(200);
+      const newUser = {
+        provider: 'google',
+        userName: 'testUser01',
+        email: 'test@gmail.com',
+        displayName: 'Test User',
+        avatar: 'testing.url',
+      };
+      const response = await request(app)
+        .get('/users', (req, res) => {})
+        .expect(200);
     });
   });
 
