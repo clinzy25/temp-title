@@ -46,4 +46,4 @@ describe('Users API', () => {
         .expect(201);
     });
   });
-});
+})
