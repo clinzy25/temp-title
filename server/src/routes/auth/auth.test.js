@@ -3,7 +3,6 @@ const dotenv = require('dotenv');
 const app = require('../../app');
 const { insertTempData } = require('../../models/feeds/feeds.model');
 const { mongoConnect, mongoDisconnect } = require('../../utils/mongo');
-const { expectCt } = require('helmet');
 
 describe('Users API', () => {
   beforeAll(async () => {
@@ -35,9 +34,8 @@ describe('Users API', () => {
 
   describe('Test GET /feeds', () => {
     test('Should respond with 201 created', async () => {
-      const response = await (
-        await request(app).post('/feeds/create')
-      )
+      const response = await request(app)
+        .post('/feeds/create')
         .send({
           host_id: 10510540804,
           feedTitle: 'newFeed',
@@ -46,4 +44,4 @@ describe('Users API', () => {
         .expect(201);
     });
   });
-})
+});
