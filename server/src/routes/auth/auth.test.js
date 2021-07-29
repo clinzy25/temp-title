@@ -25,8 +25,7 @@ describe('Users API', () => {
         avatar: 'testing.url',
       };
       const response = await request(app)
-        .get('/users', (req, res) => {
-        })
+        .get('/users')
         .expect(200);
     });
   });
