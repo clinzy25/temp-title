@@ -3,7 +3,10 @@ const passport = require('passport');
 
 const authRouter = express.Router();
 
-const CLIENT_URL = process.env.NODE_ENV === 'production' ? 'https://localhost:3001' : 'http://localhost:3000';
+const CLIENT_URL =
+  process.env.NODE_ENV === 'production'
+    ? 'https://localhost:3001'
+    : 'http://localhost:3000';
 
 authRouter.get(
   '/google',
@@ -32,10 +35,7 @@ authRouter.get('/logout', (req, res) => {
 });
 
 authRouter.get('/users', (req, res) => {
-  if (req.user) {
-    return res.status(200).json(req.user);
-  }
-  return res.status(404).json({ error: 'User not found' });
+  return res.status(200).json(req.user);
 });
 
 module.exports = authRouter;
