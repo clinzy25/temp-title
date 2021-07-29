@@ -34,7 +34,7 @@ describe('Users API', () => {
   // });
 
   describe('Test GET /feeds', () => {
-    test('Should respond with 200 success', async () => {
+    test('Should respond with 201 created', async () => {
       const response = await (
         await request(app).post('/feeds/create')
       )
@@ -43,7 +43,7 @@ describe('Users API', () => {
           feedTitle: 'newFeed',
         })
         .expect('Content-Type', /json/)
-        .expect(200);
+        .expect(201);
     });
   });
 });
