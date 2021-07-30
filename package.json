@@ -9,7 +9,7 @@
     "install": "concurrently \"npm run install-server\" \"npm run install-client\"",
     "server": "npm run watch --prefix server",
     "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "dev": "concurrently \"npm run server\" \"npm run client\" \"npm run test-watch --prefix server\"",
     "test": "npm test --prefix server && npm test --prefix client",
     "deploy": "concurrently \"npm run build --prefix client\" \"npm start --prefix server\""
   },

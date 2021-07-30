@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --forceExit",
-    "test-watch": "jest --watch --forceExit",
+    "test": "jest",
+    "test-watch": "jest --watch",
     "start": "SET NODE_ENV=production&& node src/server.js",
     "watch": "SET NODE_ENV=development&& nodemon src/server.js"
   },
