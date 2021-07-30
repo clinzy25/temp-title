@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --detectOpenHandles",
+    "test": "jest",
     "test-watch": "jest --watch --detectOpenHandles",
     "start": "SET NODE_ENV=production&& node src/server.js",
     "watch": "SET NODE_ENV=development&& nodemon src/server.js"
@@ -27,8 +27,8 @@
     "passport-google-oauth20": "^2.0.0"
   },
   "devDependencies": {
-    "jest": "25.5.4",
+    "jest": "27.0.5",
     "nodemon": "^2.0.12",
-    "supertest": "^6.1.4"
+    "supertest": "6.1.3"
   }
 }
