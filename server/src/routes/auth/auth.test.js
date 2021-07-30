@@ -16,7 +16,7 @@ describe('Users API', () => {
   });
 
   describe('Test GET /users', () => {
-    test('Should respond with 200 success', async () => {
+    test('Should respond with 200 success', async (done) => {
       const newUser = {
         provider: 'google',
         userName: 'testUser01',
@@ -29,6 +29,7 @@ describe('Users API', () => {
           req.setHeader('user', { newUser });
         })
         .expect(200);
+      done();
     });
   });
 });
