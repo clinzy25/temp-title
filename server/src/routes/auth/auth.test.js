@@ -15,27 +15,19 @@ describe('Users API', () => {
     await mongoDisconnect();
   });
 
-  // describe('Test GET /users', () => {
-  //   test('Should respond with 200 success', async () => {
-  //     const newUser = {
-  //       provider: 'google',
-  //       userName: 'testUser01',
-  //       email: 'test@gmail.com',
-  //       displayName: 'Test User',
-  //       avatar: 'testing.url',
-  //     };
-  //     const response = await request(app)
-  //       .get('/users', (req, res) => {
-  //         req.setHeader('user', { newUser });
-  //       })
-  //       .expect(200);
-  //   });
-  // });
-
-  describe('Test GET /feeds', () => {
-    test('Should respond with 201 created', async () => {
+  describe('Test GET /users', () => {
+    test('Should respond with 200 success', async () => {
+      const newUser = {
+        provider: 'google',
+        userName: 'testUser01',
+        email: 'test@gmail.com',
+        displayName: 'Test User',
+        avatar: 'testing.url',
+      };
       const response = await request(app)
-        .post('/')
+        .get('/users', (req, res) => {
+          req.setHeader('user', { newUser });
+        })
         .expect(200);
     });
   });
