@@ -7,7 +7,7 @@
     "install-server": "npm i --prefix server",
     "install-client": "npm i --prefix client",
     "install-global": "npm i",
-    "install-all": "concurrently \"npm run install-server\" \"npm run install-client\" \"npm i\"",
+    "install-all": "concurrently \"npm run install-global\" \"npm run install-server\" \"npm run install-client\"",
     "server": "npm run watch --prefix server",
     "client": "npm start --prefix client",
     "test": "npm test --prefix server && npm test --prefix client",
