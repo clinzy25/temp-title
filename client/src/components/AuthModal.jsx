@@ -12,6 +12,7 @@ const initialValues = {
 
 const validateEmail = (email) => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email);
 
+/** Check for empty fields and email format */
 const validate = (values) => {
   const errors = {};
   if (!values.username) {
@@ -29,13 +30,21 @@ const validate = (values) => {
   return errors;
 };
 
+/**
+ * @component
+ * @returns A conditionally rendered modal for user authentication
+ */
 const AuthModal = () => {
-  /*
-   * Display different values depanding on user logging in or signing up,
-   * controlled by btn at bottom of form
+  /**
+   * @param {boolean} isSignUpForm - Display different values depanding on user logging in
+   * or signing up, controlled by btn at bottom of form
    */
   const [isSignUpForm, setIsSignUpForm] = useState(false);
 
+  /**
+   * Send credentials to API for validation
+   * @param {object} values - Formik values
+   */
   const onSubmit = async (values) => {
     /** TODO -- Build endpoints and sagas */
     // const { username, email, password } = values;
@@ -75,7 +84,8 @@ const AuthModal = () => {
           )}
           {isSignUpForm
           && formik.touched.username
-          && formik.errors.username && <div>{formik.errors.username}</div>}
+          && formik.errors.username
+          && <div>{formik.errors.username}</div>}
         </div>
 
         {/* Email */}
@@ -126,12 +136,14 @@ const AuthModal = () => {
 };
 
 const Wrapper = styled.aside`
+  /* Center in viewport */
   position: absolute;
   margin: auto;
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
+  /*********************/
   display: flex;
   flex-direction: column;
   width: 500px;

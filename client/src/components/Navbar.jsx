@@ -4,10 +4,15 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setFeedTitle } from '../redux/feed/feed_actions';
 import LogoutBtn from './LogoutBtn';
 
+/**
+ * @component
+ * @returns Reusable Navbar component
+ */
 const Navbar = () => {
   const { feedTitle, inviteLink } = useSelector((state) => state.feed_reducer);
   const dispatch = useDispatch();
-  /** For styles only */
+
+  /** @param {boolean} isEditingFeedTitle - Checks if user is editing title for style adjustments */
   const [isEditingFeedTitle, setisEditingFeedTitle] = useState(false);
 
   return (

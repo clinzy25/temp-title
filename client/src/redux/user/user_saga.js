@@ -6,6 +6,9 @@ import {
 } from './user_actions';
 import { fetchUser } from '../../api';
 
+/**
+ * Get user data from db upon loading feed
+ */
 function* fetchUserFlow() {
   try {
     const response = yield call(fetchUser);

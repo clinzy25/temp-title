@@ -10,6 +10,10 @@ import { fetchUserBegin } from '../../redux/user/user_actions';
 import CreateFeed from '../CreateFeed';
 import { fetchFeedBegin } from '../../redux/feed/feed_actions';
 
+/**
+ * @component
+ * @returns The last feed the host opened, based on the 'lastActive' state value
+ */
 const HostFeed = () => {
   const dispatch = useDispatch();
   const { feed_loading, feed_error } = useSelector(
@@ -18,15 +22,16 @@ const HostFeed = () => {
   const { user, user_loading, user_error } = useSelector(
     (state) => state.user_reducer
   );
-
-  const [createdFirstFeed, setCreatedFirstFeed] = useState(false);
+  /** @param {boolean} unmountCreateFeed - Unmount CreateFeed when it's submit button is clicked */
+  const [unmountCreateFeed, setUnmountCreateFeed] = useState(false);
 
   useEffect(() => {
     dispatch(fetchUserBegin());
   }, []);
 
+  /** Ensure user has been fetched before attempting to fetch feeds */
   useEffect(() => {
-    if (user && user.feeds.length !== 0 && !feed_loading) {
+    if (user && user.feeds.length > 0) {
       dispatch(fetchFeedBegin());
     }
   }, [user]);
@@ -37,8 +42,11 @@ const HostFeed = () => {
   if (feed_error || user_error) {
     return <Error />;
   }
-  if (user && user.feeds.length === 0 && !createdFirstFeed) {
-    return <CreateFeed user={user} setCreatedFirstFeed={setCreatedFirstFeed} />;
+  /** If the user doesn't have any feeds, and the user hasn't pressed 'create a feed' btn */
+  if (user && user.feeds.length === 0 && !unmountCreateFeed) {
+    return (
+      <CreateFeed user={user} setUnmountCreateFeed={setUnmountCreateFeed} />
+    );
   }
   return (
     <Wrapper>

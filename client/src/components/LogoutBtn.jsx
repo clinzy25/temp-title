@@ -4,6 +4,10 @@ import { logout } from '../redux/user/user_actions';
 
 const LOGOUT_URL = `${process.env.REACT_APP_API_URL}/auth/logout`;
 
+/**
+ * @component
+ * @returns A reusable logout button
+ */
 const LogoutBtn = () => {
   const dispatch = useDispatch();
 

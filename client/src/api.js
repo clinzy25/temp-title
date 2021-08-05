@@ -2,6 +2,11 @@ import axios from 'axios';
 
 const API_URL = process.env.REACT_APP_API_URL;
 
+/**
+ * IMPORTANT: All api calls should have the 'withCredentials: true' header to pass
+ * req.user to each request for operations on the backend
+ */
+
 export const fetchFeed = async () => {
   try {
     const response = await axios.get(

@@ -1,36 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import { useSelector, useDispatch } from 'react-redux';
-import HostFeed from './HostFeed';
 import Auth from '../AuthModal';
-import { fetchUserBegin } from '../../redux/user/user_actions';
 import LogoutBtn from '../LogoutBtn';
 
+/**
+ * @component
+ * Public Home / marketing page / landing page
+ * @returns Home page
+ */
 export const Home = () => {
-  const { isAuthenticated } = useSelector((state) => state);
-  const dispatch = useDispatch();
-
+  /** @param {boolean} authModal - Display - hide login / signup modal */
   const [authModal, setAuthModal] = useState(false);
-
-  useEffect(() => {
-    if (isAuthenticated) {
-      dispatch(fetchUserBegin());
-    }
-  }, []);
 
   return (
     <Wrapper>
-      {isAuthenticated ? (
-        <HostFeed />
-      ) : (
-        <>
-          <h1>Home / Landing Page</h1>
-          <button type='button' onClick={() => setAuthModal(!authModal)}>
-            Login / Signup
-          </button>
-          <LogoutBtn />
-        </>
-      )}
+      <h1>Home / Landing Page</h1>
+      <button type='button' onClick={() => setAuthModal(!authModal)}>
+        Login / Signup
+      </button>
+      <LogoutBtn />
       {authModal && <Auth />}
     </Wrapper>
   );

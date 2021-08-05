@@ -9,6 +9,10 @@ import {
   createFeedError,
 } from './feed_actions';
 
+/**
+ * Fetch feed using req.user._id to search db
+ * Req.user attached to each request by OAuth
+ */
 function* fetchFeedFlow() {
   try {
     const response = yield call(fetchFeed);
@@ -18,6 +22,10 @@ function* fetchFeedFlow() {
   }
 }
 
+/**
+ * Create feed in db
+ * @param {string} action -- payload should be user-selected feed details
+ */
 function* createFeedFlow(action) {
   try {
     const response = yield call(createFeed, action.payload);

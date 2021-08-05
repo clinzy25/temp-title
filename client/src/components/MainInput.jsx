@@ -8,7 +8,11 @@ const handleSubmit = (e) => {
   console.log('submit');
 };
 
-const FeedContent = () => (
+/**
+ * @component
+ * @returns Main input form for feed, handles text, images, and video submissions
+ */
+const MainInput = () => (
   <Wrapper>
     <form
       className='main-input-ctr'
@@ -43,4 +47,4 @@ const Wrapper = styled.div`
   }
 `;
 
-export default FeedContent;
+export default MainInput;
