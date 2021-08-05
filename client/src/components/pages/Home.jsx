@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 import HostFeed from './HostFeed';
-import Auth from '../Auth';
+import Auth from '../AuthModal';
 import { fetchUserBegin } from '../../redux/user/user_actions';
 import LogoutBtn from '../LogoutBtn';
 
