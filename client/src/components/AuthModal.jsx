@@ -109,7 +109,7 @@ const AuthModal = () => {
         </div>
 
         {/* Buttons */}
-        <button type='submit'>{isSignUpForm ? 'Sign in' : 'Log in'}</button>
+        <button type='submit'>{isSignUpForm ? 'Sign up' : 'Log in'}</button>
         <div className='switch-forms'>
           <span>
             {isSignUpForm
