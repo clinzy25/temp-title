@@ -27,7 +27,7 @@ const HostFeed = () => {
 
   useEffect(() => {
     if (user && user.feeds.length !== 0 && !feed_loading) {
-      dispatch(fetchFeedBegin(user._id));
+      dispatch(fetchFeedBegin());
     }
   }, [user]);
 

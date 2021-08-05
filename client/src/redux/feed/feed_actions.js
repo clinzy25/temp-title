@@ -6,9 +6,8 @@ export const CREATE_FEED_SUCCESS = 'CREATE_FEED_SUCCESS';
 export const CREATE_FEED_ERROR = 'CREATE_FEED_ERROR';
 export const SET_FEED_TITLE = 'SET_FEED_TITLE';
 
-export const fetchFeedBegin = (userId) => ({
+export const fetchFeedBegin = () => ({
   type: FETCH_FEED_BEGIN,
-  payload: userId,
 });
 
 export const fetchFeedSuccess = (feed) => ({

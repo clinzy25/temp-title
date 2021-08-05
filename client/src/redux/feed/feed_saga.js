@@ -9,9 +9,9 @@ import {
   createFeedError,
 } from './feed_actions';
 
-function* fetchFeedFlow(action) {
+function* fetchFeedFlow() {
   try {
-    const response = yield call(fetchFeed, action.payload);
+    const response = yield call(fetchFeed);
     yield put(fetchFeedSuccess(response));
   } catch {
     yield put(fetchFeedError());
