@@ -40,9 +40,9 @@ const AuthModal = () => {
     /** TODO -- Build endpoints and sagas */
     // const { username, email, password } = values;
     // if (isSignUpForm) {
-    //   dispatch(registerBegin({ username, email, password }));
+    //   dispatch(registerBegin( username, email, password ));
     // } else {
-    //   dispatch(loginBegin({ email, password }));
+    //   dispatch(loginBegin( email, password ));
     // }
     console.log('Form values: ', values);
   };
