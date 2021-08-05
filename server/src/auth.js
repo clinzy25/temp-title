@@ -53,7 +53,7 @@ passport.deserializeUser((id, done) => {
 function checkIsLoggedIn(req, res, next) {
   const isLoggedIn = req.isAuthenticated() && req.user;
   if (!isLoggedIn) {
-    return res.statusCode(401).json({
+    return res.status(401).json({
       error: 'Not logged in',
     });
   }

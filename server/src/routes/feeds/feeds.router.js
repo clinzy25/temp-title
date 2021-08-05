@@ -1,9 +1,10 @@
 const express = require('express');
 const { httpGetFeed, httpCreateFeed } = require('./feeds.controller');
+const { checkIsLoggedIn } = require('../../auth');
 
 const feedsRouter = express.Router();
 
-feedsRouter.post('/', httpGetFeed);
-feedsRouter.post('/create', httpCreateFeed);
+feedsRouter.post('/', checkIsLoggedIn, httpGetFeed);
+feedsRouter.post('/create', checkIsLoggedIn, httpCreateFeed);
 
 module.exports = feedsRouter;

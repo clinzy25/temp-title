@@ -1,6 +1,7 @@
 const { findFeed, addFeed } = require('../../models/feeds/feeds.model');
 
 async function httpGetFeed(req, res) {
+  console.log(req.user);
   const { userId } = req.body;
   const feed = await findFeed(userId);
   if (!feed) {

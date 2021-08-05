@@ -4,7 +4,13 @@ const API_URL = process.env.REACT_APP_API_URL;
 
 export const fetchFeed = async (userId) => {
   try {
-    const response = await axios.post(`${API_URL}/feeds`, { userId });
+    const response = await axios.post(
+      `${API_URL}/feeds`,
+      { userId },
+      {
+        withCredentials: true,
+      }
+    );
     return response.data;
   } catch (e) {
     console.error(e);
@@ -26,7 +32,9 @@ export const fetchUser = async () => {
 
 export const createFeed = async (feed) => {
   try {
-    const response = await axios.post(`${API_URL}/feeds/create`, feed);
+    const response = await axios.post(`${API_URL}/feeds/create`, feed, {
+      withCredentials: true,
+    });
     return response.data;
   } catch (e) {
     console.error(e);
