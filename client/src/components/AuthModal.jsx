@@ -36,13 +36,13 @@ const AuthModal = () => {
    */
   const [isSignUpForm, setIsSignUpForm] = useState(false);
 
-  const onSubmit = (values) => {
+  const onSubmit = async (values) => {
     /** TODO -- Build endpoints and sagas */
     // const { username, email, password } = values;
     // if (isSignUpForm) {
-    //   dispatch(registerBegin( username, email, password ));
+    //   await dispatch(registerBegin( username, email, password ));
     // } else {
-    //   dispatch(loginBegin( email, password ));
+    //   await dispatch(loginBegin( email, password ));
     // }
     console.log('Form values: ', values);
   };
