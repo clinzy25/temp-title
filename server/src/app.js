@@ -17,16 +17,17 @@ const config = {
   COOKIE_KEY_1: process.env.COOKIE_KEY_1,
   COOKIE_KEY_2: process.env.COOKIE_KEY_2,
 };
-
+/** TODO: fix contentSecurityPolicy bug, see Jira TODOs for more info */
 app.use(
   helmet({
     contentSecurityPolicy: false,
   })
 );
+/** Create a 24hr cookie session */
 app.use(
   cookieSession({
     name: 'cookie-session',
-    maxAge: 86400000, // 24 hours
+    maxAge: 86400000,
     keys: [config.COOKIE_KEY_1, config.COOKIE_KEY_2],
   })
 );
@@ -34,6 +35,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 passport.use(googleStrategy);
 
+/**
+ * @property {boolean} credentials -- ensure user data is attatched to each req as a cookie
+ */
 app.use(
   cors({
     origin: 'http://localhost:3000',
@@ -44,7 +48,6 @@ app.use(express.json());
 app.use(morgan('tiny'));
 app.use(express.static(path.join(__dirname, '..', 'public')));
 app.use('/', api);
-
 app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'public', 'index.html'));
 });

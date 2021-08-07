@@ -19,6 +19,8 @@ module.exports = {
     'comma-dangle': 0,
     'no-console': 0,
     'no-underscore-dangle': 0,
+    'operator-linebreak': 0,
+    'no-unused-vars': ['error', { args: 'none' }],
   },
   settings: {
     react: {

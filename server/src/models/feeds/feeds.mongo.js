@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const feedsSchema = new mongoose.Schema({
+  /** Reference to user collection, the user that created the feed */
   host_id: {
     type: 'ObjectId',
     ref: 'User',

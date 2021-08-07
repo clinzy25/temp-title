@@ -1,5 +1,10 @@
 const { findFeed, addFeed } = require('../../models/feeds/feeds.model');
 
+/**
+ * Get feed from db by user id from req.user
+ * @param {object} req -- Contains user id for search
+ * @returns {object} -- A feed
+ */
 async function httpGetFeed(req, res) {
   const userId = req.user._id;
   const feed = await findFeed(userId);
@@ -11,6 +16,11 @@ async function httpGetFeed(req, res) {
   return res.status(200).json(feed);
 }
 
+/**
+ * Create a new feed
+ * @param {object} req -- Contains user defined values and the user id
+ * @returns {object} -- A feed
+ */
 async function httpCreateFeed(req, res) {
   const feed = req.body;
   const completeFeed = await addFeed(feed);
