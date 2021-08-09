@@ -9,12 +9,9 @@ const API_URL = process.env.REACT_APP_API_URL;
 
 export const fetchFeed = async () => {
   try {
-    const response = await axios.get(
-      `${API_URL}/feeds`,
-      {
-        withCredentials: true,
-      }
-    );
+    const response = await axios.get(`${API_URL}/feeds`, {
+      withCredentials: true,
+    });
     return response.data;
   } catch (e) {
     console.error(e);
@@ -24,7 +21,7 @@ export const fetchFeed = async () => {
 
 export const fetchUser = async () => {
   try {
-    const response = await axios.get(`${API_URL}/auth/users`, {
+    const response = await axios.get(`${API_URL}/users`, {
       withCredentials: true,
     });
     return response;

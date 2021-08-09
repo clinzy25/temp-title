@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-const feeds = require('./feeds.mongo');
-const users = require('../users/users.mongo');
+const feeds = require('./feed.mongo');
+const users = require('../user/user.mongo');
 
 /**
  * Get last feed viewed by host by their user id

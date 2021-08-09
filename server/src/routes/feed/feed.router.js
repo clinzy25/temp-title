@@ -1,6 +1,6 @@
 const express = require('express');
-const { httpGetFeed, httpCreateFeed } = require('./feeds.controller');
-const { checkIsLoggedIn } = require('../../auth');
+const { httpGetFeed, httpCreateFeed } = require('./feed.controller');
+const { checkIsLoggedIn } = require('../auth/auth.controller');
 
 const feedsRouter = express.Router();
 

@@ -1,4 +1,4 @@
-const { findFeed, addFeed } = require('../../models/feeds/feeds.model');
+const { findFeed, addFeed } = require('../../models/feed/feed.model');
 
 /**
  * Get feed from db by user id from req.user

@@ -1,6 +1,6 @@
 const { Strategy } = require('passport-google-oauth20');
 const passport = require('passport');
-const User = require('./models/users/users.mongo');
+const User = require('../../models/user/user.mongo');
 require('dotenv').config();
 
 const AUTH_OPTIONS = {

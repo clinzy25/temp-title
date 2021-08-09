@@ -5,7 +5,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 const passport = require('passport');
 const cookieSession = require('cookie-session');
-const { googleStrategy } = require('./auth');
+const { googleStrategy } = require('./routes/auth/auth.controller');
 const api = require('./routes/api');
 require('dotenv').config();
 
