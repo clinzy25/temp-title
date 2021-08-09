@@ -36,6 +36,39 @@ app.use(passport.session());
 passport.use(googleStrategy);
 
 /**
+ * Mock authentication endpoint called before testing protected endpoints
+ * Sets req.user with fakeUser
+ */
+const fakeUser = {
+  feeds: [],
+  provider: 'google',
+  userName: 'fakeymcfakerson',
+  email: 'bigfake@gmail.com',
+  displayName: 'fakey faker',
+  avatar: 'fake-link',
+};
+
+if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test') {
+  app.use((req, res, next) => {
+    if (req && req.session && req.session.user_tmp) {
+      req.user = req.session.user_tmp;
+    }
+    if (next) {
+      next();
+    }
+  });
+  app.get('/auth/fake', (req, res) => {
+    if (!req.session) {
+      req.session = {};
+    }
+    req.session.user_tmp = fakeUser;
+    req.user = req.session.user_tmp;
+
+    res.redirect('/');
+  });
+}
+
+/**
  * @property {boolean} credentials -- ensure user data is attatched to each req as a cookie
  */
 app.use(

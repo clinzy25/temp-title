@@ -45,7 +45,7 @@ async function verifyCallback(accessToken, refreshToken, profile, done) {
     });
 
     User.create(newUser, () => {
-      console.log(`User ${displayName}`);
+      console.log(`User ${displayName} created`);
     });
 
     done(null, newUser);
