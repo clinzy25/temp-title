@@ -71,9 +71,14 @@ async function addFeed(feed) {
 
   try {
     /** Add feed id to user's feed array */
+    const feedForUserSchema = {
+      feedId: newFeed._id,
+      feedTitle: newFeed.feedTitle,
+    };
+    console.log(newFeed);
     await users.updateOne(
       { _id: feed.host_id },
-      { $push: { feeds: newFeed._id } }
+      { $push: { feeds: feedForUserSchema } }
     );
 
     /** Create feed document in feeds collection */
@@ -81,7 +86,7 @@ async function addFeed(feed) {
 
     await setLastActive(feed.host_id);
   } catch (error) {
-    console.error('Could not create feed in db');
+    console.error('Could not create feed in db: ', error);
     return error;
   }
 

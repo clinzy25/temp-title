@@ -20,7 +20,12 @@ const usersSchema = new mongoose.Schema({
   },
   /** Array of feed references from feed collection */
   feeds: {
-    type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Feed' }],
+    type: [
+      {
+        feedId: { type: mongoose.Schema.Types.ObjectId, ref: 'Feed' },
+        feedTitle: String,
+      },
+    ],
     required: true,
   },
 });
