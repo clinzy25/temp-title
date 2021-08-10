@@ -40,6 +40,7 @@ passport.use(googleStrategy);
  * Sets req.user with fakeUser
  */
 const fakeUser = {
+  _id: '6101c1654cc7fd48e020fdd9',
   feeds: [],
   provider: 'google',
   userName: 'fakeymcfakerson',
@@ -48,10 +49,23 @@ const fakeUser = {
   avatar: 'fake-link',
 };
 
+const me = {
+  _id: '6101c1654cc7fd48e020fdd9',
+  provider: 'google',
+  userName: 'user116788405171900091187',
+  email: 'conner.linzy25@gmail.com',
+  displayName: 'Conner Linzy',
+  avatar:
+    'https://lh3.googleusercontent.com/a-/AOh14GiLaf5Zk4UcsCutM8YrP9YImDwPZ',
+};
+
 if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test') {
   app.use((req, res, next) => {
     if (req && req.session && req.session.user_tmp) {
       req.user = req.session.user_tmp;
+    }
+    if (req.headers['user-agent'] === 'PostmanRuntime/7.28.2') {
+      req.user = me;
     }
     if (next) {
       next();

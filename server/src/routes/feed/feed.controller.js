@@ -7,7 +7,8 @@ const { findFeed, addFeed } = require('../../models/feed/feed.model');
  */
 async function httpGetFeed(req, res) {
   const userId = req.user._id;
-  const feed = await findFeed(userId);
+  const { feedTitle } = req.body;
+  const feed = await findFeed(userId, feedTitle);
   if (!feed) {
     return res.status(404).json({
       error: 'Feed not found',
