@@ -5,6 +5,8 @@ import {
   CREATE_FEED_SUCCESS,
   CREATE_FEED_BEGIN,
   CREATE_FEED_ERROR,
+  DELETE_FEED_SUCCESS,
+  DELETE_FEED_BEGIN,
 } from './feed_actions';
 
 const initialState = {
@@ -38,6 +40,11 @@ const feedReducer = (state = initialState, action) => {
         feedTitle,
         inviteLink,
         feed_loading: false,
+      };
+    }
+    case DELETE_FEED_SUCCESS: {
+      return {
+        ...state,
       };
     }
     default:

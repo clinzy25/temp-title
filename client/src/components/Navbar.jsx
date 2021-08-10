@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 import { setFeedTitle } from '../redux/feed/feed_actions';
 import LogoutBtn from './LogoutBtn';
+import ManageFeedsModal from './ManageFeedsModal';
 
 /**
  * @component
@@ -14,6 +15,7 @@ const Navbar = () => {
 
   /** @param {boolean} isEditingFeedTitle - Checks if user is editing title for style adjustments */
   const [isEditingFeedTitle, setisEditingFeedTitle] = useState(false);
+  const [manageFeedModal, setManageFeedModal] = useState(false);
 
   return (
     <Wrapper isEditingFeedTitle={isEditingFeedTitle}>
@@ -31,6 +33,13 @@ const Navbar = () => {
         }}
       />
       {inviteLink}
+      <button
+        type='button'
+        onClick={() => setManageFeedModal(!manageFeedModal)}
+      >
+        Manage Feeds
+      </button>
+      {manageFeedModal && <ManageFeedsModal />}
       <LogoutBtn />
     </Wrapper>
   );
@@ -52,6 +61,9 @@ const Wrapper = styled.header`
     :hover {
       background-color: ${(props) => props.isEditingFeedTitle || '#00000011'};
     }
+  }
+  .create-feed-btn {
+    position: absolute;
   }
 `;
 export default Navbar;

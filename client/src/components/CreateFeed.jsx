@@ -28,8 +28,12 @@ const CreateFeed = ({ user, setUnmountCreateFeed }) => {
 
   return (
     <form>
-      <span>Type a name for the feed: </span>
-      <input ref={feedNameRef} type='text' />
+      <span>Create a new feed: </span>
+      <input
+        placeholder='Type a name for the feed..'
+        ref={feedNameRef}
+        type='text'
+      />
       <button onClick={(e) => handleSubmit(e)} type='submit'>
         Start a Feed
       </button>
