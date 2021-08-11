@@ -19,11 +19,7 @@ const config = {
   COOKIE_KEY_2: process.env.COOKIE_KEY_2,
 };
 /** TODO: fix contentSecurityPolicy bug, see Jira TODOs for more info */
-app.use(
-  helmet({
-    contentSecurityPolicy: false,
-  })
-);
+app.use(helmet());
 /** Create a 24hr cookie session */
 app.use(
   cookieSession({

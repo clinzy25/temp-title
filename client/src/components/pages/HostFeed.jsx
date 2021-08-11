@@ -1,4 +1,6 @@
-import React, { useEffect, useState, lazy, Suspense } from 'react';
+import React, {
+  useEffect, useState, lazy, Suspense
+} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import Navbar from '../Navbar';
