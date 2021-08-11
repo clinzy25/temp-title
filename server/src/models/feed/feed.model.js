@@ -43,7 +43,8 @@ async function findFeed(userId, feedTitle) {
     /** If feed title, user is selecting a specific feed, so query by 'feedTitle' */
     return await feeds.findOneAndUpdate(
       { host_id: userId, feedTitle },
-      { lastActive: true }
+      { lastActive: true },
+      { new: true }
     );
   } catch (error) {
     console.error('Could not find feed in db');

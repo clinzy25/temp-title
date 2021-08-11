@@ -34,6 +34,11 @@ async function httpCreateFeed(req, res) {
     return res.status(400).json({ error: 'Missing required feed property' });
   }
   const completeFeed = await addFeed(feed);
+  if (!completeFeed) {
+    return res.status(500).json({
+      error: 'Could not create feed',
+    });
+  }
   return res.status(201).json(completeFeed);
 }
 
