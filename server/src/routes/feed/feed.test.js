@@ -1,6 +1,7 @@
 const request = require('supertest');
 const dotenv = require('dotenv');
 const app = require('../../app');
+const feeds = require('../../models/feed/feed.mongo');
 const { mongoConnect, mongoDisconnect } = require('../../utils/mongo');
 
 /** Create an agent to fake authenticate and make test protected endpoints */
@@ -15,6 +16,7 @@ describe('Feeds API', () => {
   });
 
   afterAll(async () => {
+    await feeds.collection.deleteMany({ feedTitle: 'Test feed' });
     await mongoDisconnect();
   });
 
