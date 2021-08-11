@@ -31,8 +31,8 @@ async function verifyCallback(accessToken, refreshToken, profile, done) {
     if (existingUser) {
       return done(null, existingUser);
     }
-  } catch (e) {
-    console.error(e);
+  } catch (error) {
+    console.error('Error verifying OAuth callback. ', error);
   }
   /** Create new user */
   try {
@@ -49,8 +49,8 @@ async function verifyCallback(accessToken, refreshToken, profile, done) {
     });
 
     done(null, newUser);
-  } catch (e) {
-    console.error(e);
+  } catch (error) {
+    console.error('Could not create user. ', error);
   }
   return null;
 }
@@ -72,9 +72,8 @@ passport.deserializeUser((id, done) => {
  * and check if req.user exists
  * This function is added to secure routes
  * @param {object} req
- * @param {object} res
- * @param {next} next
- * @returns {function} next
+ * @param {function} next
+ * @returns next
  */
 function checkIsLoggedIn(req, res, next) {
   const isLoggedIn = req.isAuthenticated() && req.user;
