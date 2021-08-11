@@ -82,10 +82,10 @@ async function addFeed(feed) {
       { $push: { feeds: feedForUserSchema } }
     );
 
+    await setLastActive(feed.host_id);
+
     /** Create feed document in feeds collection */
     await feeds.create(newFeed);
-
-    await setLastActive(feed.host_id);
   } catch (error) {
     console.error('Could not create feed in db: ', error);
     return error;
