@@ -4,11 +4,11 @@ import { createFeedBegin } from '../redux/feed/feed_actions';
 
 /**
  * A form that renders conditionally based on whether the user has 0 feeds
- * Propts user to create a new feed
+ * Prompts user to create a new feed
  * Because it unmounts itself, user will be 'redirected' to the feed they create
  * @component
- * @param {object} user
- * @param {function} setUnmountCreateFeed
+ * @param {Object} user
+ * @param {function(boolean)} setUnmountCreateFeed
  * @returns A form to create a feed
  */
 const CreateFeed = ({ user, setUnmountCreateFeed }) => {

@@ -23,7 +23,7 @@ authRouter.get(
 authRouter.get(
   '/google/callback',
   passport.authenticate('google', {
-    // TODO: Redirect to Dashboard and some kind of error page
+    // TODO: Redirect to some kind of error page
     failureRedirect: '/failure',
     successRedirect: `${CLIENT_URL}/feeds`,
   }),

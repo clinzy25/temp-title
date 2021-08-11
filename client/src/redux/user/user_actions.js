@@ -12,7 +12,10 @@ export const fetchUserSuccess = (user) => ({
   payload: user,
 });
 
-export const fetchUserError = () => ({ type: FETCH_USER_ERROR });
+export const fetchUserError = (error) => ({
+  type: FETCH_USER_ERROR,
+  payload: error,
+});
 
 export const logout = () => ({
   type: LOGOUT,

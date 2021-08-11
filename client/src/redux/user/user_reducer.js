@@ -12,6 +12,11 @@ const initialState = {
   user_loading: true,
 };
 
+/**
+ * @param {object} state
+ * @param {{type: string, payload: object}} action
+ * @returns new state
+ */
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_USER_BEGIN:

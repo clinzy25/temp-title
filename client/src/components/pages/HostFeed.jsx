@@ -22,6 +22,7 @@ const HostFeed = () => {
   const { user, user_loading, user_error } = useSelector(
     (state) => state.user_reducer
   );
+
   /** @param {boolean} unmountCreateFeed - Unmount CreateFeed when it's submit button is clicked */
   const [unmountCreateFeed, setUnmountCreateFeed] = useState(false);
 

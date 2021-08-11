@@ -4,9 +4,9 @@ const API_URL = process.env.REACT_APP_API_URL;
 
 /**
  * IMPORTANT: All api calls should have the 'withCredentials: true' header to pass
- * req.user to each request for operations on the backend
+ * req.user to each request for access to protected endpoints on the backend
+ * Do not catch errors here, they are caught and handled in the sagas
  */
-
 export const fetchFeed = async (feedTitle) => {
   const response = await axios.post(`${API_URL}/feeds`, feedTitle, {
     withCredentials: true,

@@ -1,6 +1,4 @@
-import {
-  createStore, combineReducers, applyMiddleware, compose
-} from 'redux';
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import logger from 'redux-logger';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import createSagaMilddleware from 'redux-saga';
@@ -12,20 +10,24 @@ import userSaga from './user/user_saga';
 
 const sagaMiddleware = createSagaMilddleware();
 
+/** Compose middlwares */
 const middlewares = composeWithDevTools(
   compose(applyMiddleware(sagaMiddleware, logger))
 );
 
+/** Combine sagas into root saga */
+function* rootSaga() {
+  yield all([fork(feedSaga), fork(userSaga)]);
+}
+
+/** Combine reducers */
 const appReducer = combineReducers({
   feed_reducer,
   user_reducer,
 });
 
+/** Create store */
 const store = createStore(appReducer, middlewares);
-
-function* rootSaga() {
-  yield all([fork(feedSaga), fork(userSaga)]);
-}
 
 sagaMiddleware.run(rootSaga);
 

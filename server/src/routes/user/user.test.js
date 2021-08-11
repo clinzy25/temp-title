@@ -27,8 +27,3 @@ describe('Users API', () => {
     });
   });
 });
-
-/**
- * There is no need for a POST test because users are created on the backend during authentication.
- * There is no users POST route.
- */

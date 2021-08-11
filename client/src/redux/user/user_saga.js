@@ -17,8 +17,8 @@ function* fetchUserFlow() {
     } else {
       yield put(fetchUserSuccess(response.data));
     }
-  } catch {
-    yield put(fetchUserError());
+  } catch (error) {
+    yield put(fetchUserError(error));
   }
 }
 

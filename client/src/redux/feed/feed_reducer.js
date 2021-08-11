@@ -6,7 +6,6 @@ import {
   CREATE_FEED_BEGIN,
   CREATE_FEED_ERROR,
   DELETE_FEED_SUCCESS,
-  DELETE_FEED_BEGIN,
 } from './feed_actions';
 
 const initialState = {
@@ -17,6 +16,11 @@ const initialState = {
   lastActive: true,
 };
 
+/**
+ * @param {object} state
+ * @param {{type: string, payload: object}} action
+ * @returns new state
+ */
 const feedReducer = (state = initialState, action) => {
   switch (action.type) {
     case CREATE_FEED_BEGIN:

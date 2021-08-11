@@ -4,7 +4,16 @@ import styled from 'styled-components';
 import CreateFeed from './CreateFeed';
 import { deleteFeedBegin } from '../redux/feed/feed_actions';
 
+/**
+ * @component
+ * @returns A conditionall rendered modal with options for host to create a new feed
+ * or manage existing feeds
+ */
 const ManageFeedsModal = () => {
+  /**
+   * @param unmountCreateFeed -- this doesn't do anything here, its only to satisfy the props of
+   * the CreateFeed component
+   */
   const [unmountCreateFeed, setUnmountCreateFeed] = useState(false);
   const { user } = useSelector((state) => state.user_reducer);
   const dispatch = useDispatch();
@@ -44,6 +53,7 @@ const ManageFeedsModal = () => {
     </Wrapper>
   );
 };
+
 const Wrapper = styled.aside`
   /* Center in viewport */
   position: absolute;

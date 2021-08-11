@@ -10,7 +10,7 @@ function generateInviteLink() {
 /**
  * Find users last active feed and set 'lastActive' to false
  * @param {string} userId
- * @returns {null}
+ * @returns null
  */
 async function setLastActive(userId) {
   try {
@@ -38,8 +38,9 @@ async function findFeed(userId, feedTitle) {
       return await feeds.findOne({ host_id: userId, lastActive: true });
     }
 
-    /** If feed title, user is selecting a specific feed, so query by 'feedTitle' */
     await setLastActive(userId);
+
+    /** If feed title, user is selecting a specific feed, so query by 'feedTitle' */
     return await feeds.findOneAndUpdate(
       { host_id: userId, feedTitle },
       { lastActive: true }
@@ -75,7 +76,6 @@ async function addFeed(feed) {
       feedId: newFeed._id,
       feedTitle: newFeed.feedTitle,
     };
-    console.log(newFeed);
     await users.updateOne(
       { _id: feed.host_id },
       { $push: { feeds: feedForUserSchema } }

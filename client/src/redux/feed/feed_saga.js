@@ -15,7 +15,8 @@ import {
 /**
  * Fetch feed using req.user._id to search db
  * Req.user attached to each request by OAuth
- * @param {string} action -- payload should be feedTitle if user is selecting specific feed
+ * @param {{type: string, payload: string}} action -- payload should be feedTitle if
+ * user is selecting specific feed, else user is logging in or refreshing and payload is undefined
  */
 function* fetchFeedFlow(action) {
   try {
@@ -28,7 +29,8 @@ function* fetchFeedFlow(action) {
 
 /**
  * Create feed in db
- * @param {string} action -- payload should be user-selected feed details
+ * @param {{type: string, payload: {host_id: string, feedTitle: string}}} action --
+ * payload should be user-selected feed details
  */
 function* createFeedFlow(action) {
   try {
