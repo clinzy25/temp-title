@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, lazy, Suspense } from 'react';
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 import { setFeedTitle } from '../redux/feed/feed_actions';
 import LogoutBtn from './LogoutBtn';
-import ManageFeedsModal from './ManageFeedsModal';
+import SmallLoader from './SmallLoader';
 
+const ManageFeedsModal = lazy(() => import('./ManageFeedsModal'));
 /**
  * @component
  * @returns Reusable Navbar component
@@ -39,7 +40,11 @@ const Navbar = () => {
       >
         Manage Feeds
       </button>
-      {manageFeedModal && <ManageFeedsModal />}
+      {manageFeedModal && (
+        <Suspense fallback={<SmallLoader />}>
+          <ManageFeedsModal />
+        </Suspense>
+      )}
       <LogoutBtn />
     </Wrapper>
   );

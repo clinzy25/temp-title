@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, lazy, Suspense } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import CreateFeed from './CreateFeed';
 import { deleteFeedBegin } from '../redux/feed/feed_actions';
+import SmallLoader from './SmallLoader';
+
+const CreateFeed = lazy(() => import('./CreateFeed'));
 
 /**
  * @component
@@ -30,11 +32,13 @@ const ManageFeedsModal = () => {
     <Wrapper>
       <h1>Manage Feeds</h1>
       {!unmountCreateFeed && (
-        <CreateFeed
-          className='create-feed-btn'
-          user={user}
-          setUnmountCreateFeed={setUnmountCreateFeed}
-        />
+        <Suspense fallback={<SmallLoader />}>
+          <CreateFeed
+            className='create-feed-btn'
+            user={user}
+            setUnmountCreateFeed={setUnmountCreateFeed}
+          />
+        </Suspense>
       )}
       <h1>Your feeds</h1>
       <ul className='feed-list'>

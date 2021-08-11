@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, lazy, Suspense } from 'react';
 import styled from 'styled-components';
-import Auth from '../AuthModal';
 import LogoutBtn from '../LogoutBtn';
+import SmallLoader from '../SmallLoader';
+
+const AuthModal = lazy(() => import('../AuthModal'));
 
 /**
  * @component
@@ -19,7 +21,11 @@ export const Home = () => {
         Login / Signup
       </button>
       <LogoutBtn />
-      {authModal && <Auth />}
+      {authModal && (
+        <Suspense fallback={<SmallLoader />}>
+          <AuthModal />
+        </Suspense>
+      )}
     </Wrapper>
   );
 };

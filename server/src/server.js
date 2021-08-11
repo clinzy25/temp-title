@@ -4,6 +4,7 @@ const path = require('path');
 require('dotenv').config();
 const app = require('./app');
 const { mongoConnect } = require('./utils/mongo');
+const feeds = require('./models/feed/feed.mongo');
 
 const PORT = process.env.PORT || 3001;
 /** Self signed cert expires 7/23/2022 */

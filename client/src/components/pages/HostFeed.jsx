@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, lazy, Suspense } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import Navbar from '../Navbar';
 import MainInput from '../MainInput';
 import FeedContent from '../FeedContent';
-import Loading from '../Loading';
+import LoadingPage from './LoadingPage';
+import SmallLoader from '../SmallLoader';
 import Error from '../Error';
 import { fetchUserBegin } from '../../redux/user/user_actions';
-import CreateFeed from '../CreateFeed';
 import { fetchFeedBegin } from '../../redux/feed/feed_actions';
+
+const CreateFeed = lazy(() => import('../CreateFeed'));
 
 /**
  * @component
@@ -38,7 +40,7 @@ const HostFeed = () => {
   }, [user]);
 
   if (feed_loading || user_loading) {
-    return <Loading />;
+    return <LoadingPage />;
   }
   if (feed_error || user_error) {
     return <Error />;
@@ -46,7 +48,9 @@ const HostFeed = () => {
   /** If the user doesn't have any feeds, and the user hasn't pressed 'create a feed' btn */
   if (user && user.feeds.length === 0 && !unmountCreateFeed) {
     return (
-      <CreateFeed user={user} setUnmountCreateFeed={setUnmountCreateFeed} />
+      <Suspense fallback={<SmallLoader />}>
+        <CreateFeed user={user} setUnmountCreateFeed={setUnmountCreateFeed} />
+      </Suspense>
     );
   }
   return (
