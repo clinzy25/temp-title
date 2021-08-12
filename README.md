@@ -26,9 +26,11 @@ Focused, purposeful, invitation-only news feeds.
 
 4. Set preferred PORT in server and client .env.sample
 
-5. Remove .sample from env files
+5. Set any strings for COOKIE_KEYs in server .env.sample
 
-6. In project root --
+6. Remove .sample from env files
+
+7. In project root --
     - npm run install-all
     - npm run dev (development)
     - npm run deploy (production)
