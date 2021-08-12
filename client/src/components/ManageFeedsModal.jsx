@@ -12,11 +12,6 @@ const CreateFeed = lazy(() => import('./CreateFeed'));
  * or manage existing feeds
  */
 const ManageFeedsModal = () => {
-  /**
-   * @param unmountCreateFeed -- this doesn't do anything here, its only to satisfy the props of
-   * the CreateFeed component
-   */
-  const [unmountCreateFeed, setUnmountCreateFeed] = useState(false);
   const { user } = useSelector((state) => state.user_reducer);
   const dispatch = useDispatch();
 
@@ -31,15 +26,9 @@ const ManageFeedsModal = () => {
   return (
     <Wrapper>
       <h1>Manage Feeds</h1>
-      {!unmountCreateFeed && (
-        <Suspense fallback={<SmallLoader />}>
-          <CreateFeed
-            className='create-feed-btn'
-            user={user}
-            setUnmountCreateFeed={setUnmountCreateFeed}
-          />
-        </Suspense>
-      )}
+      <Suspense fallback={<SmallLoader />}>
+        <CreateFeed className='create-feed-btn' user={user} />
+      </Suspense>
       <h1>Your feeds</h1>
       <ul className='feed-list'>
         {user.feeds.map((feed) => {

@@ -23,7 +23,8 @@ const CreateFeed = ({ user, setUnmountCreateFeed }) => {
     };
     await dispatch(createFeedBegin(feedData));
     /** Unmount this component */
-    setUnmountCreateFeed(true);
+    // eslint-disable-next-line no-unused-expressions
+    setUnmountCreateFeed && setUnmountCreateFeed(true);
   };
 
   return (
