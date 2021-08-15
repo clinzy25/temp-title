@@ -1,4 +1,4 @@
-import React, { useState, lazy, Suspense } from 'react';
+import React, { lazy, Suspense } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { deleteFeedBegin } from '../redux/feed/feed_actions';
@@ -66,4 +66,4 @@ const Wrapper = styled.aside`
   }
 `;
 
-export default ManageFeedsModal;
+export default ManageFeedsModal
